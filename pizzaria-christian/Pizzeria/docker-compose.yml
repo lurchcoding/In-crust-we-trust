@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres
+    container_name: springboot-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=eww
+      - POSTGRES_PASSWORD=eww
+      - POSTGRES_DB=pizzeria
