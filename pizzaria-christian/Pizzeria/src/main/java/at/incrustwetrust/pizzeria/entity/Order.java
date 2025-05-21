@@ -2,37 +2,36 @@ package at.incrustwetrust.pizzeria.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.io.File;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Entity
-public class User {
+public class Order {
 
     @Id
-    // string oder UUID
-    private String userId;
-    private File profilPicture;
-    private String username;
-    private String password;
+    private String OrderId;
+    // do we need that - I think yes - so that we know
+    @ManyToOne
+    private User orderedBy;
+    @CreationTimestamp
+    private LocalDateTime deliveredOn;
+    private double total;
     private String firstname;
     private String surname;
-    private String email;
     private String phoneNumber;
     private String address;
     // can be worldwide - means alphanumeric
     private String zipcode;
     private String city;
-    private String country;
-    private boolean isActive;
-    private boolean isAdmin;
+    private String deliveryNotes;
+    @ManyToMany
+    private ArrayList <Product> orderItem;
     @CreationTimestamp
     private LocalDateTime createdOn;
     @ManyToOne
     private User createdBy;
-    @UpdateTimestamp
-    private LocalDateTime latsUpdatedOn;
-    @ManyToOne
-    private User lastUpdatedBy;
+    // orders can not be manipulated - no updated Timestamps requiered
+
+
 }

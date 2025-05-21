@@ -1,11 +1,11 @@
 package at.incrustwetrust.pizzeria.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,21 +15,24 @@ import java.util.UUID;
 public class Product {
 
     @Id
-    private String id;
+    private String productId;
     private String porductDescription;
+    private double price;
+    private File productPicture;
     @ManyToMany
     private ArrayList<Allergen> allergens;
     private String maincategory;
     private String subcategory;
     private boolean isActive;
     private LocalDateTime created;
-    @OneToOne
+    @CreationTimestamp
+    private LocalDateTime createdOn;
+    @ManyToOne
     private User createdBy;
-    private LocalDateTime updated;
-    @OneToOne
-    private User updateBy;
-    //Bild fehlt
-
+    @UpdateTimestamp
+    private LocalDateTime latsUpdatedOn;
+    @ManyToOne
+    private User lastUpdatedBy;
 
 
 
