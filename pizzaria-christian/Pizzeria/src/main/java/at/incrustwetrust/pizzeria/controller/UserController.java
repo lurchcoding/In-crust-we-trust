@@ -1,6 +1,9 @@
 package at.incrustwetrust.pizzeria.controller;
 
 import at.incrustwetrust.pizzeria.entity.User;
+import at.incrustwetrust.pizzeria.service.UserService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -8,6 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping ("/Benutzer")
 public class UserController {
+
+    private final UserService userService;
+
+    public UserController ( UserService userService){ this.userService = userService;}
+
 
     @GetMapping
     public List<User> readAll ()
@@ -18,16 +26,17 @@ public class UserController {
     @GetMapping("/{id}")
     public User read (@PathVariable String id)
     {
-        return null;
+        return this.userService.read(id);
     }
 
     @PostMapping
-    public User create (@RequestBody User user)
+    @ResponseStatus(HttpStatus.CREATED)
+    public User create (@RequestBody @Valid User user)
     {
-        return null;
+        return this.userService.create(user);
     }
 
-    @PutMapping ("/{id})"
+    @PutMapping ("/{id}")
     public User update (@PathVariable String Id, @RequestBody User user)
     {
         return null;

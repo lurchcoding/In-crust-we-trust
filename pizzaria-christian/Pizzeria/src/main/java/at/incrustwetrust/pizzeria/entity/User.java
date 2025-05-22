@@ -1,19 +1,22 @@
 package at.incrustwetrust.pizzeria.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+
 import java.io.File;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 public class User {
 
     @Id
-    // string oder UUID
     private String userId;
     private File profilPicture;
+    @NotBlank
     private String username;
     private String password;
     private String firstname;
@@ -35,4 +38,44 @@ public class User {
     private LocalDateTime latsUpdatedOn;
     @ManyToOne
     private User lastUpdatedBy;
+
+    public User(){
+        this.userId = UUID.randomUUID().toString();
+    }
+
+
+
+    public User( File profilPicture, String username, String password, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy) {
+        this.userId = UUID.randomUUID().toString();
+        this.profilPicture = profilPicture;
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.country = country;
+        this.isActive = isActive;
+        this.isAdmin = isAdmin;
+        this.createdBy = createdBy;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
