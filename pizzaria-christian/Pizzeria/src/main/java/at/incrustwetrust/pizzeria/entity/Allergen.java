@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 public class Allergen {
 
    @Id
-   private char abbreviation;
+   private Character abbreviation;
    private String description;
    @CreationTimestamp
    private LocalDateTime createdOn;
    @ManyToOne
-   private User createdBy;
+   private Costumer createdBy;
    @UpdateTimestamp
    private LocalDateTime latsUpdatedOn;
    @ManyToOne
-   private User lastUpdatedBy;
+   private Costumer lastUpdatedBy;
 }

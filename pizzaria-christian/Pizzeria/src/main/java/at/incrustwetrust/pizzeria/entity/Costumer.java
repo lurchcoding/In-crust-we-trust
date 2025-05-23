@@ -1,23 +1,19 @@
 package at.incrustwetrust.pizzeria.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 
 import java.io.File;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-public class User {
+public class Costumer {
 
     @Id
-    private String userId;
-    private File profilPicture;
-    @NotBlank
-    private String username;
+    private String costumerId;
+    //private File profilPicture;
+    // @NotBlank
+    private String costumerName;
     private String password;
     private String firstname;
     private String surname;
@@ -30,25 +26,29 @@ public class User {
     private String country;
     private boolean isActive;
     private boolean isAdmin;
-    @CreationTimestamp
+  /*  @CreationTimestamp
     private LocalDateTime createdOn;
     @ManyToOne
     private User createdBy;
     @UpdateTimestamp
     private LocalDateTime latsUpdatedOn;
     @ManyToOne
-    private User lastUpdatedBy;
+    private User lastUpdatedBy;*/
 
-    public User(){
-        this.userId = UUID.randomUUID().toString();
+    public Costumer(){
+        this.costumerId = UUID.randomUUID().toString();
     }
 
+    public Costumer(String costumerName, String email) {
+        this.costumerId = UUID.randomUUID().toString();
+        this.costumerName = costumerName;
+        this.email = email;
+    }
 
-
-    public User( File profilPicture, String username, String password, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy) {
-        this.userId = UUID.randomUUID().toString();
-        this.profilPicture = profilPicture;
-        this.username = username;
+    public Costumer(File profilPicture, String costumerName, String password, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, Costumer createdBy) {
+        this.costumerId = UUID.randomUUID().toString();
+        //this.profilPicture = profilPicture;
+        this.costumerName = costumerName;
         this.password = password;
         this.firstname = firstname;
         this.surname = surname;
@@ -60,15 +60,15 @@ public class User {
         this.country = country;
         this.isActive = isActive;
         this.isAdmin = isAdmin;
-        this.createdBy = createdBy;
+       // this.createdBy = createdBy;
     }
 
-    public String getUsername() {
-        return username;
+    public String getCostumerName() {
+        return costumerName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCostumerName(String username) {
+        this.costumerName = username;
     }
 
     public String getEmail() {

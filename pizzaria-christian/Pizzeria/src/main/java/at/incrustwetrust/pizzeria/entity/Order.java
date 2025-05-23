@@ -13,10 +13,10 @@ public class Order {
     private String OrderId;
     // do we need that - I think yes - so that we know
     @ManyToOne
-    private User orderedBy;
+    //private Costumer orderedBy;
     @CreationTimestamp
     private LocalDateTime deliveredOn;
-    private double total;
+    private Double total;
     private String firstname;
     private String surname;
     private String phoneNumber;
@@ -30,8 +30,8 @@ public class Order {
     @CreationTimestamp
     private LocalDateTime createdOn;
     @ManyToOne
-    private User createdBy;
-    // orders can not be manipulated - no updated Timestamps requiered
+    private Costumer createdBy;
+    // orders can not be manipulated - no updated Timestamps required
 
 
 }

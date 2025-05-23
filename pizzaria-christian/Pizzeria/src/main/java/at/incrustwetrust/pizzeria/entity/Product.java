@@ -7,32 +7,30 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.File;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class Product {
 
     @Id
     private String productId;
-    private String porductDescription;
-    private double price;
+    private String productDescription;
+    private Double price;
     private File productPicture;
     @ManyToMany
-    private ArrayList<Allergen> allergens;
-    private String maincategory;
-    private String subcategory;
+    private List<Allergen> allergens;
+    private String mainCategory;
+    private String subCategory;
     private boolean isActive;
     private LocalDateTime created;
     @CreationTimestamp
     private LocalDateTime createdOn;
     @ManyToOne
-    private User createdBy;
+    private Costumer createdBy;
     @UpdateTimestamp
     private LocalDateTime latsUpdatedOn;
     @ManyToOne
-    private User lastUpdatedBy;
+    private Costumer lastUpdatedBy;
 
 
 
