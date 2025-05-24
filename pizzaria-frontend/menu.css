@@ -92,5 +92,5 @@ input:checked + .slider:before {
 @media screen {
   #scrollsbycar {
   display: none;
+  }
 }
-}   

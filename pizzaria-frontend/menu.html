@@ -13,16 +13,16 @@
 </head>
 <body>
     <header>
-        <nav class="navbar bg-body sticky-top">
+        <nav class="navbar bg-body py-0">
             <div class="container-fluid">
-                <a class="navbar-brand" href=""><h1 id="dancing-script"><i class="bi bi-caret-left fs-2"></i>In Crust We Trust</h1></a>
+                <a class="navbar-brand m-auto" href=""><h1 class="p-auto" id="dancing-script"><i class="bi bi-caret-left fs-2"><img class="me-2" src="./pictures/pizza_icon_131067.png" alt="" class="m-auto"></i>In Crust We Trust</h1></a>             
                 <div class="d-flex">
                     <a class="nav-link active me-2 fs-3 mx-5" href="#"><i class="bi bi-cart4"></i></a>
-                    <a class="nav-link active fs-3 ms-5 me-2" href="#">Login</a>
+                    <button class="btn active fs-3 ms-5 me-2 py-0" href="#">Login</button>
                 </div>               
             </div>
         </nav>
-        <div class="navbar bg-body-tertiary sticky-top">
+        <div class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <div class="d-flex">
                     <button class="navbar-toggler justify-content-start me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -33,28 +33,29 @@
                             <input type="checkbox">
                             <span class="slider round"></span>
                         </label>
-                        <p id="vegbtn" class="m-auto ms-2 ">vegan <i class="bi bi-leaf"></i></p>  
+                        <p id="vegbtn" class="m-auto ms-2 "><i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> vegetarisch</p>  
                     </div>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas offcanvas-start" style="width: 300px;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                         <div class="offcanvas-header">
-                            <h5 class="offcanvas-title fs-3 fw-bold" id="offcanvasNavbarLabel">Menu</h5>
+                            <h5 class="offcanvas-title fs-3 fw-bold" id="offcanvasNavbarLabel">Menü</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                           <div class="offcanvas-body">
                                 <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4">
                                     <nav class="nav nav-pills flex-column">
-                                        <a class="nav-link active" href="#item-1">Vorspeisen</a>
-                                        <a class="nav-link active" href="#item-2">Hauptspeisen</a>
+                                        <a class="nav-link active fw-semibold text-dark p-2" style="background-color:white"; href="#item-1"><i class="bi bi-cup-hot-fill"></i> Vorspeisen</a>
+                                        <a class="nav-link active fw-semibold text-dark p-2" style="background-color: white"; href="#item-2"><i class="bi bi-fork-knife"></i> Hauptspeisen</a>
                                         <div class="nav flex-column ms-3">
-                                            <a class="nav-link my-1" href="#item-2-1">Pizza</a>
-                                            <a class="nav-link my-1" href="#item-2-2">Pasta</a>
-                                            <a class="nav-link my-1" href="#item-2-3">Bowl</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-2-1">Pizza</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-2-2">Pasta</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-2-3">Bowl</a>
                                         </div>
-                                        <a class="nav-link" href="#item-3">Getränke</a>            
+                                        <a class="nav-link fw-semibold text-dark p-2" style="background-color: white;" href="#item-3"><i class="bi bi-cake-fill"></i> Nachspeise</a> 
+                                        <a class="nav-link fw-semibold text-dark p-2" style="background-color: white;" href="#item-3"><i class="bi bi-cup-straw"></i> Getränke</a>            
                                         <div class="nav flex-column ms-3">
-                                            <a class="nav-link my-1" href="#item-3-1">Alkoholfrei</a>
-                                            <a class="nav-link my-1" href="#item-3-2">Bier</a>
-                                            <a class="nav-link my-1" href="#item-3-3">Wein</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-3-1">Alkoholfrei</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-3-2">Bier</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-3-3">Wein</a>
                                         </div>
                                     </nav>
                                 </nav>
