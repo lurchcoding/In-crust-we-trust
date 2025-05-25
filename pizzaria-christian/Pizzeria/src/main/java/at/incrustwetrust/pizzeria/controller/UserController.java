@@ -20,7 +20,7 @@ public class UserController {
     @GetMapping
     public List<User> readAll ()
     {
-        return null;
+        return this.userService.readAll();
     }
 
     @GetMapping("/{id}")
@@ -37,15 +37,16 @@ public class UserController {
     }
 
     @PutMapping ("/{id}")
-    public User update (@PathVariable String id, @RequestBody User user)
+    public User update (@PathVariable String id , @RequestBody User user)
     {
-        return null;
+        return this.userService.update(id, user);
     }
 
     @DeleteMapping ("/{id}")
+    @ResponseStatus (HttpStatus.OK)
     public User delete (@PathVariable String id)
     {
-        return null;
+        return this.userService.delete(id);
     }
 
 }
