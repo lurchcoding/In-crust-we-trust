@@ -2,6 +2,7 @@ package at.incrustwetrust.pizzeria.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -26,11 +27,11 @@ public class Product {
     @CreationTimestamp
     private LocalDateTime createdOn;
     @ManyToOne
-    private Costumer createdBy;
+    private User createdBy;
     @UpdateTimestamp
     private LocalDateTime latsUpdatedOn;
     @ManyToOne
-    private Costumer lastUpdatedBy;
+    private User lastUpdatedBy;
 
 
 

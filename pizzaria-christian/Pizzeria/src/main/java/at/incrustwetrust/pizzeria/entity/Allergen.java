@@ -17,9 +17,9 @@ public class Allergen {
    @CreationTimestamp
    private LocalDateTime createdOn;
    @ManyToOne
-   private Costumer createdBy;
+   private User createdBy;
    @UpdateTimestamp
    private LocalDateTime latsUpdatedOn;
    @ManyToOne
-   private Costumer lastUpdatedBy;
+   private User lastUpdatedBy;
 }

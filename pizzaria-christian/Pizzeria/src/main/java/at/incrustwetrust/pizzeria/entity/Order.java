@@ -1,10 +1,12 @@
 package at.incrustwetrust.pizzeria.entity;
 
+
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 
 @Entity
 public class Order {
@@ -12,8 +14,8 @@ public class Order {
     @Id
     private String OrderId;
     // do we need that - I think yes - so that we know
-    @ManyToOne
-    //private Costumer orderedBy;
+    //@ManyToOne
+    //private User orderedBy;
     @CreationTimestamp
     private LocalDateTime deliveredOn;
     private Double total;
@@ -30,7 +32,7 @@ public class Order {
     @CreationTimestamp
     private LocalDateTime createdOn;
     @ManyToOne
-    private Costumer createdBy;
+    private User createdBy;
     // orders can not be manipulated - no updated Timestamps required
 
 
