@@ -36,10 +36,11 @@ public class UserController {
         return this.userService.create(user);
     }
 
-    @PutMapping ("/{id}")
-    public User update (@PathVariable String id , @RequestBody User user)
+    @PutMapping
+    @ResponseStatus (HttpStatus.OK)
+    public User update (@RequestBody @Valid User user)
     {
-        return this.userService.update(id, user);
+        return this.userService.update(user);
     }
 
     @DeleteMapping ("/{id}")

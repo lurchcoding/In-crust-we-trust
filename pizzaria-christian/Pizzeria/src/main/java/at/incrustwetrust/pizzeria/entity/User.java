@@ -8,9 +8,10 @@ import org.hibernate.annotations.*;
 
 import java.io.File;
 import java.time.Instant;
+import java.util.List;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -20,14 +21,24 @@ public class User {
     @Transient
     private File profilPicture;
     @NotBlank
+    @Column (nullable = false, unique = true)
     private String username;
     private String password;
+    private String salutation;
+    @Max(30)
+    @Column(length = 30)
+    private String salutationDetail;
     private String firstname;
     private String surname;
+    @Email
+    @NotBlank
+    @Column (nullable = false, unique = true)
     private String email;
     private String phoneNumber;
     private String address;
     // can be worldwide - means alphanumeric
+    @Max(10)
+    @Column(length = 10)
     private String zipcode;
     private String city;
     private String country;
@@ -41,14 +52,19 @@ public class User {
     private Instant lastUpdatedAt;
     @ManyToOne
     private User lastUpdatedBy;
+    @OneToMany(mappedBy = "createdBy")
+    private List<Order> orders;
 
     public User() {
     }
 
-   public User(File profilPicture, String username, String password, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy) {
+    public User(String userId, File profilPicture, String username, String password, String salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy) {
+        this.userId = userId;
         this.profilPicture = profilPicture;
         this.username = username;
         this.password = password;
+        this.salutation = salutation;
+        this.salutationDetail = salutationDetail;
         this.firstname = firstname;
         this.surname = surname;
         this.email = email;

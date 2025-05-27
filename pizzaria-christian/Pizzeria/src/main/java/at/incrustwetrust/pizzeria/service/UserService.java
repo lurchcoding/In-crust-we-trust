@@ -40,13 +40,11 @@ public class UserService {
         return userCheck;
     }
 
-    public User update(String id, User user) {
-
-        User userToBeUpdated= userRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("BenutzerId nicht in der Datenbank"));
-        System.out.println(userToBeUpdated.getUserId());
-        user.setUserId(userToBeUpdated.getUserId());
-        ifUsernameOrEmailAlreadyExistThrow (user, userToBeUpdated.getUserId() );
+    public User update(User user) {
+        User userToBeUpdated= userRepository.findById(user.getUserId()).orElseThrow( () -> new ObjectNotFoundException("BenutzerId nicht in der Datenbank"));
+        ifUsernameOrEmailAlreadyExistThrow (user, user.getUserId() );
         return userRepository.save(user);
+
     }
 
 
@@ -61,10 +59,9 @@ public class UserService {
         }
     }
 
-        // make sure that Email / Username does not exit BUT don't compare it with the User`s mail / Username
+    // make sure that Email / Username does not exit BUT don't compare it with the own User`s mail / Username
     private void ifUsernameOrEmailAlreadyExistThrow (User user, String userToBeUpdatedId) {
         Optional<User> userCheck = userRepository.findUserByEmail(user.getEmail());
-        System.out.println(userCheck.get().getUserId());
         System.out.println(userToBeUpdatedId);
         if (userCheck.isPresent() && !userCheck.get().getUserId().equals(userToBeUpdatedId)) {
             throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit dieser E-Mail vorhanden");

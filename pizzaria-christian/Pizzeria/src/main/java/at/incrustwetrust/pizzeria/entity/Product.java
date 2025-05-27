@@ -26,6 +26,7 @@ public class Product {
             name = "products_allergens",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "allergene"))
+
     private List<Allergen> allergens;
     private String mainCategory;
     private String subCategory;

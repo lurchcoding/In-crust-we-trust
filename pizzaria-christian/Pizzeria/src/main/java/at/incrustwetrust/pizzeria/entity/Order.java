@@ -1,6 +1,7 @@
 package at.incrustwetrust.pizzeria.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -29,6 +30,9 @@ public class Order {
     @CreationTimestamp
     private Instant createdAt;
     @ManyToOne
+    @JoinColumn(name = "created_by")
+    // hier geht es darum keine Endlosschleife für die json Rückgabe zu erzeugen
+    // @JsonIgnore
     private User createdBy;
        // orders can not be manipulated - no updated Timestamps required
 
