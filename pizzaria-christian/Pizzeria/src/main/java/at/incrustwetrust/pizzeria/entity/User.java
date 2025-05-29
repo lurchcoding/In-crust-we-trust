@@ -22,10 +22,20 @@ public class User {
     private File profilPicture;
     @NotBlank
     @Column (nullable = false, unique = true)
+    @Size(min = 5 , message = "Der Username muss mindestens 5 Zeichen lang sein")
     private String username;
+    @NotBlank
+    @Column (nullable = false)
+    @Size(min = 12 , message = "mindestens 12 Zeichen erforderlich")
+    @Pattern(regexp = ".*\\d.*", message = "mindestens eine Zahl erforderlich")
+    @Pattern(regexp = ".*[A-Z].*", message = "mindestens eine Grossbuchstabe erforderlich")
+    @Pattern(regexp = ".*[a-z].*", message = "mindestens eine Kleinbuchstabe erforderlich")
+    @Pattern(regexp = ".*[@$!%*?&].*", message = "mindestens eine Sonderzeichen erforderlich")
     private String password;
-    private String salutation;
-    @Max(30)
+
+    @Enumerated(EnumType.STRING)
+    private Salutation salutation;
+    @Size(min = 30, message = "Maximale Länge = 30 Zeichen")
     @Column(length = 30)
     private String salutationDetail;
     private String firstname;
@@ -37,7 +47,7 @@ public class User {
     private String phoneNumber;
     private String address;
     // can be worldwide - means alphanumeric
-    @Max(10)
+    @Size(min = 10)
     @Column(length = 10)
     private String zipcode;
     private String city;
@@ -58,12 +68,12 @@ public class User {
     public User() {
     }
 
-    public User(String userId, File profilPicture, String username, String password, String salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy) {
+    public User(String userId, File profilPicture, String username, String password, String salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy, List<Order> orders) {
         this.userId = userId;
         this.profilPicture = profilPicture;
         this.username = username;
         this.password = password;
-        this.salutation = salutation;
+        this.salutation = Salutation.valueOf(salutation);
         this.salutationDetail = salutationDetail;
         this.firstname = firstname;
         this.surname = surname;
@@ -76,6 +86,7 @@ public class User {
         this.isActive = isActive;
         this.isAdmin = isAdmin;
         this.createdBy = createdBy;
+        this.orders = orders;
     }
 
     public String getUserId() {

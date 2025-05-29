@@ -60,7 +60,7 @@ public class UserService {
     }
 
     // make sure that Email / Username does not exit BUT don't compare it with the own User`s mail / Username
-    private void ifUsernameOrEmailAlreadyExistThrow (User user, String userToBeUpdatedId) {
+   /* private void ifUsernameOrEmailAlreadyExistThrow (User user, String userToBeUpdatedId) {
         Optional<User> userCheck = userRepository.findUserByEmail(user.getEmail());
         System.out.println(userToBeUpdatedId);
         if (userCheck.isPresent() && !userCheck.get().getUserId().equals(userToBeUpdatedId)) {
@@ -70,9 +70,18 @@ public class UserService {
         if (userCheck.isPresent() && !userCheck.get().getUserId().equals(userToBeUpdatedId)) {
             throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit diesem Benutzernamen vorhanden");
         }
+    }*/
+
+    private void ifUsernameOrEmailAlreadyExistThrow (User user, String userToBeUpdatedId) {
+        Optional<User> userCheck = userRepository.findByEmailAndUserIdNot(user.getEmail(),userToBeUpdatedId);
+        if (userCheck.isPresent()) {
+            throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit dieser E-Mail vorhanden");
+        }
+        userCheck = userRepository.findUserByUsernameAndUserIdNot(user.getUsername(),userToBeUpdatedId);
+        if (userCheck.isPresent()) {
+            throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit diesem Benutzernamen vorhanden");
+        }
     }
-
-
 
 
 
