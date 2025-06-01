@@ -1,5 +1,6 @@
 package at.incrustwetrust.pizzeria.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.*;
@@ -32,7 +33,6 @@ public class User {
     @Pattern(regexp = ".*[a-z].*", message = "mindestens eine Kleinbuchstabe erforderlich")
     @Pattern(regexp = ".*[@$!%*?&].*", message = "mindestens eine Sonderzeichen erforderlich")
     private String password;
-
     @Enumerated(EnumType.STRING)
     private Salutation salutation;
     @Size(min = 30, message = "Maximale Länge = 30 Zeichen")
@@ -44,14 +44,17 @@ public class User {
     @NotBlank
     @Column (nullable = false, unique = true)
     private String email;
+    //todo: maybe add validation
     private String phoneNumber;
     private String address;
     // can be worldwide - means alphanumeric
-    @Size(min = 10)
+    @Size(min = 2, max = 10)
     @Column(length = 10)
     private String zipcode;
     private String city;
-    private String country;
+    // todo: add enum
+    @Enumerated(EnumType.STRING)
+    private CountryCode country;
     private boolean isActive = true;
     private boolean isAdmin = false;
     @CreationTimestamp
@@ -61,15 +64,14 @@ public class User {
     @UpdateTimestamp
     private Instant lastUpdatedAt;
     @ManyToOne
-    private User lastUpdatedBy;
+     private User lastUpdatedBy;
     @OneToMany(mappedBy = "createdBy")
     private List<Order> orders;
 
     public User() {
     }
 
-    public User(String userId, File profilPicture, String username, String password, String salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy, List<Order> orders) {
-        this.userId = userId;
+    public User(File profilPicture, String username, String password, String salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy, List<Order> orders) {
         this.profilPicture = profilPicture;
         this.username = username;
         this.password = password;
@@ -82,7 +84,7 @@ public class User {
         this.address = address;
         this.zipcode = zipcode;
         this.city = city;
-        this.country = country;
+        this.country = CountryCode.valueOf(country);
         this.isActive = isActive;
         this.isAdmin = isAdmin;
         this.createdBy = createdBy;
@@ -113,13 +115,28 @@ public class User {
         this.username = username;
     }
 
-    /*
     public String getPassword() {
         return password;
-    }*/
+    }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSalutation() {
+        return salutation.toString();
+    }
+
+    public void setSalutation(String salutation) {
+        this.salutation = Salutation.valueOf(salutation);
+    }
+
+    public String getSalutationDetail() {
+        return salutationDetail;
+    }
+
+    public void setSalutationDetail(String salutationDetail) {
+        this.salutationDetail = salutationDetail;
     }
 
     public String getFirstname() {
@@ -179,11 +196,11 @@ public class User {
     }
 
     public String getCountry() {
-        return country;
+        return country.toString();
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        this.country = CountryCode.valueOf(country);
     }
 
     public boolean isActive() {
@@ -202,11 +219,6 @@ public class User {
         isAdmin = admin;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-
     public User getCreatedBy() {
         return createdBy;
     }
@@ -215,16 +227,19 @@ public class User {
         this.createdBy = createdBy;
     }
 
-
-    public void setLastUpdatedAt(Instant lastUpdatedAt) {
-        this.lastUpdatedAt = lastUpdatedAt;
-    }
-
     public User getLastUpdatedBy() {
         return lastUpdatedBy;
     }
 
     public void setLastUpdatedBy(User lastUpdatedBy) {
         this.lastUpdatedBy = lastUpdatedBy;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
