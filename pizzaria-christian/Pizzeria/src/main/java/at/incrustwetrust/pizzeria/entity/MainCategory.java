@@ -28,5 +28,4 @@ public enum MainCategory {
         return validSubCategories.getOrDefault(mainCat, List.of()).contains(subCat);
     }
 
-
 }
