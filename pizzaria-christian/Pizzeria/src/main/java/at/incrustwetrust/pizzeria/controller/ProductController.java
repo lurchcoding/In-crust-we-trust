@@ -38,6 +38,7 @@ public class ProductController {
         return this.productService.update(product);
     }
 
+    // to be discussed - if it should be possible
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Product delete(@PathVariable String id) {
