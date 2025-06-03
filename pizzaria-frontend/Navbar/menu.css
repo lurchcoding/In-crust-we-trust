@@ -1,5 +1,5 @@
 * {
-    margin: o;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     position: relative;
@@ -97,4 +97,5 @@ input:checked + .slider:before {
 
 .divheight {
   height: 300px;
+
 }
