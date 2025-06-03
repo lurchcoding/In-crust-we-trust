@@ -99,3 +99,8 @@ input:checked + .slider:before {
   height: 300px;
 
 }
+
+.cardstyle {
+  border-radius: 25px;
+  border: 7px double black;
+}
