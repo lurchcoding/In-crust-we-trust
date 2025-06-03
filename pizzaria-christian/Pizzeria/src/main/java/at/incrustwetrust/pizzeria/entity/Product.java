@@ -26,6 +26,7 @@ public class Product {
     private double price;
     @Transient
     private File productPicture;
+    private boolean isVegetarian;
     @ManyToMany
     @JoinTable(
             name = "products_allergens",
@@ -57,11 +58,12 @@ public class Product {
 
     public Product (){};
 
-    public Product(String productName, String productDescription, double price, File productPicture, List<Allergen> allergens, MainCategory mainCategory, SubCategory subCategory, boolean isActive, User createdBy, List<OrderItem> orders) {
+    public Product(String productName, String productDescription, double price, File productPicture, boolean isVegetarian, List<Allergen> allergens, MainCategory mainCategory, SubCategory subCategory, boolean isActive, User createdBy, List<OrderItem> orders) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
         this.productPicture = productPicture;
+        this.isVegetarian = isVegetarian;
         this.allergens = allergens;
         this.mainCategory = mainCategory;
         this.subCategory = subCategory;
@@ -108,6 +110,14 @@ public class Product {
 
     public void setProductPicture(File productPicture) {
         this.productPicture = productPicture;
+    }
+
+    public boolean isVegetarian() {
+        return isVegetarian;
+    }
+
+    public void setVegetarian(boolean vegetarian) {
+        isVegetarian = vegetarian;
     }
 
     public List<Allergen> getAllergens() {

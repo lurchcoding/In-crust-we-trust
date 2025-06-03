@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crust_me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+    <script defer src="navigation.js"></script>
+</head>
+
+<body>
+    <div id="navigation">
+
+    </div>
+
+
+    <section>
+    <div class="container pt-5 mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+
+
+                <h3 class="mb-4">Produktinfo</h3>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">Pizza Cardinale</h5>
+                    <h5 class="mb-0">€ 11,90</h5>
+                </div>
+
+                <div class="text-start mb-4">
+                    <img
+                            src="./pictures/pizza-3000274_640.jpg"
+                            onerror="this.onerror=null; this.src='./pictures/pizza_icon_131067.png';"
+                            class="img-fluid w-50"
+                            alt="Produktbild"
+                    >
+                </div>
+
+                <div class="mb-4 fs-6">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci architecto aspernatur, autem beatae cum, cumque dolorum eveniet harum itaque magni minima natus non officia optio repellendus soluta voluptas voluptatem?
+                    </p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="allergene" class="h6 mb-2" >Allergene</label>
+                    <select class="form-select" id="allergene">
+                        <option selected>Bitte wählen...</option>
+                        <option value="A">A - Allergen</option>
+                        <option value="B">B - Allergen</option>
+                        <option value="C">G - Allergen</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="maincategory" class="h6 mb-2" >Hauptkategorie</label>
+                    <select class="form-select" id="maincategory">
+                        <option selected>Bitte wählen...</option>
+                        <option value="VORSPEISEN">Vorspeise</option>
+                        <option value="HAUPTSPEISEN">Hauptspeise</option>
+                        <option value="NACHPEISEN">Nachspeise</option>
+                        <option value="GETRAENKE">Getränk</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="subcategory" class="h6 mb-2" >Detailkategorie</label>
+                    <select class="form-select" id="subcategory">
+                        <option selected>Bitte wählen...</option>
+                        <option value="Pizza">Pizza</option>
+                        <option value="Pasta">Pasta</option>
+                        <option value="Wein">Wein</option>
+                    </select>
+                </div>
+
+               <div class="d-flex justify-content-end align-items-center mb-2">
+                    <label class="form-check-label me-2" for="isUserActive">aktiv</label>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="isUserActive">
+                    </div>
+                </div>
+
+                <div class="gap-2 d-flex justify-content-end mb-3">
+                    <button class="btn btn-outline-secondary ">Löschen</button>
+                    <button class="btn btn-primary">Speichern</button>
+                </div>
+
+                <div >
+                    <table class="table fs-6 text-muted text-decoration-none">
+                        <tbody>
+                        <tr>
+                            <td>erfasst:</td>
+                            <td>25.05.2025</td>
+                            <td class=" text-end" >Christian Pfneisl</td>
+                        </tr>
+                        <tr>
+                            <td>letzte Änderung:</td>
+                            <td>01.06.2025</td>
+                            <td class=" text-end" >Flo Wasweissich</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+
+</body>
+
+</html>
