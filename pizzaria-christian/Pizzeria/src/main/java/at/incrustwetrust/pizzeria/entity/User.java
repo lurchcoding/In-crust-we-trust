@@ -33,8 +33,7 @@ public class User {
     @Pattern(regexp = ".*[a-z].*", message = "mindestens eine Kleinbuchstabe erforderlich")
     @Pattern(regexp = ".*[@$!%*?&].*", message = "mindestens eine Sonderzeichen erforderlich")
     private String password;
-    @Enumerated(EnumType.STRING)
-    private Salutation salutation;
+    private String salutation;
     @Size(min = 30, message = "Maximale Länge = 30 Zeichen")
     @Column(length = 30)
     private String salutationDetail;
@@ -75,7 +74,7 @@ public class User {
         this.profilPicture = profilPicture;
         this.username = username;
         this.password = password;
-        this.salutation = Salutation.valueOf(salutation);
+        this.salutation = salutation;
         this.salutationDetail = salutationDetail;
         this.firstname = firstname;
         this.surname = surname;
@@ -124,11 +123,11 @@ public class User {
     }
 
     public String getSalutation() {
-        return salutation.toString();
+        return salutation;
     }
 
-    public void setSalutation(String salutation) {
-        this.salutation = Salutation.valueOf(salutation);
+    public void setSalutation(Salutation salutation) {
+        this.salutation = salutation.toString();
     }
 
     public String getSalutationDetail() {
