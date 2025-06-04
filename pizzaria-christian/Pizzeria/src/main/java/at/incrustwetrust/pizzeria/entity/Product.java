@@ -127,7 +127,8 @@ public class Product {
     public void setAllergens(List<Allergen> allergens) {
         this.allergens = allergens;
     }
-
+    
+   
     public MainCategory getMainCategory() {
         return mainCategory;
     }

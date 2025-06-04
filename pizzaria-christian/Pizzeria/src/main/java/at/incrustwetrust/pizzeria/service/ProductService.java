@@ -39,9 +39,9 @@ public class ProductService {
         return productCheck;
     }
 
-    public Product update(Product product) {
-        Product productToBeUpdated= productRepository.findById(product.getProductId()).orElseThrow( () -> new ObjectNotFoundException("ProduktId nicht in der Datenbank"));
-        ifProductNameAlreadyExistThrow (product, product.getProductId() );
+    public Product update(Product product, String id) {
+        Product productToBeUpdated= productRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("ProduktId nicht in der Datenbank"));
+        ifProductNameAlreadyExistThrow (product, id );
         return productRepository.save(product);
 
     }

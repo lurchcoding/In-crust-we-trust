@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/Produkte")
+@RequestMapping ("/products")
 public class ProductController {
 
     private final ProductService productService;
@@ -32,10 +32,10 @@ public class ProductController {
         return this.productService.create(product);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Product update(@RequestBody @Valid Product product) {
-        return this.productService.update(product);
+    public Product update(@RequestBody @Valid Product product, @PathVariable String id) {
+        return this.productService.update(product, id);
     }
 
     // to be discussed - if it should be possible

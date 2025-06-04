@@ -40,9 +40,9 @@ public class UserService {
         return userCheck;
     }
 
-    public User update(User user) {
-        User userToBeUpdated= userRepository.findById(user.getUserId()).orElseThrow( () -> new ObjectNotFoundException("BenutzerId nicht in der Datenbank"));
-        ifUsernameOrEmailAlreadyExistThrow (user, user.getUserId() );
+    public User update(User user, String id) {
+        User userToBeUpdated= userRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("BenutzerId nicht in der Datenbank"));
+        ifUsernameOrEmailAlreadyExistThrow (user, id );
         return userRepository.save(user);
 
     }

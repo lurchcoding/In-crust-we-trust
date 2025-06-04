@@ -3,6 +3,7 @@ package at.incrustwetrust.pizzeria.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,8 +16,6 @@ import java.util.List;
 public class Allergen {
 
    @Id
-   // alternative = AllergenTyp
-   @Pattern(regexp = "A|B|C|D|E|F|G|H|L|M|N|O|P|R", message = "Ungültiger Allergen-Code")
    private char abbreviation;
    @NotBlank
    @Column (nullable = false)
@@ -33,6 +32,8 @@ public class Allergen {
    @ManyToMany (mappedBy = "allergens")
    private List<Product> products;
 
+   public Allergen(){};
+   
    public Allergen(char abbreviation, String description, User createdBy) {
       this.abbreviation = abbreviation;
       this.description = description;
@@ -43,17 +44,17 @@ public class Allergen {
       return abbreviation;
    }
 
-   public void setAbbreviation(char abbreviation) {
-      this.abbreviation = abbreviation;
+   public void setAbbreviation( AllergenType allergenType) {
+      this.abbreviation = allergenType.name().toString().charAt(0);
+      this.description = allergenType.getDescription();
+
    }
 
    public String getDescription() {
       return description;
    }
 
-   public void setDescription(String description) {
-      this.description = description;
-   }
+   
 }
 
 

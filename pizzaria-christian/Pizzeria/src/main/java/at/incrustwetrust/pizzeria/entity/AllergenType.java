@@ -3,11 +3,11 @@ package at.incrustwetrust.pizzeria.entity;
 import java.util.Map;
 
 //This enum would be an Alternative to the existing version (abbreviation = char)
-public enum AllergenTyp {
+public enum AllergenType {
     A, B, C, D, E, F, G, H, L, M, N, O, P, R;
 
 
-    private static final Map<AllergenTyp, String> description = Map.ofEntries(
+    private static final Map<AllergenType, String> description = Map.ofEntries(
             Map.entry(A, "Glutenhaltiges Getreide"),
             Map.entry(B, "Krebstiere"),
             Map.entry(C, "Eier"),
