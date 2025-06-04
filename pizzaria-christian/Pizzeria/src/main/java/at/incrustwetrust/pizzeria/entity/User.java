@@ -70,11 +70,11 @@ public class User {
     public User() {
     }
 
-    public User(File profilPicture, String username, String password, String salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, CountryCode countryCode, boolean isActive, boolean isAdmin, User createdBy, List<Order> orders) {
+    public User(File profilPicture, String username, String password, Salutation salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, CountryCode countryCode, boolean isActive, boolean isAdmin, User createdBy, List<Order> orders) {
         this.profilPicture = profilPicture;
         this.username = username;
         this.password = password;
-        this.salutation = salutation;
+        this.salutation = salutation.toString();
         this.salutationDetail = salutationDetail;
         this.firstname = firstname;
         this.surname = surname;
