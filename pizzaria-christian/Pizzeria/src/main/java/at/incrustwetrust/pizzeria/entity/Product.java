@@ -33,10 +33,8 @@ public class Product {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "allergen_abbreviation"))
     private List<Allergen> allergens;
-    @Enumerated(EnumType.STRING)
-    private MainCategory mainCategory;
-    @Enumerated(EnumType.STRING)
-    private SubCategory subCategory;
+    private String mainCategory;
+    private String subCategory;
     private boolean isActive;
     @CreationTimestamp
     private Instant createdAt;
@@ -49,9 +47,7 @@ public class Product {
     @Schema(hidden = true)
     private User lastUpdatedBy;
 
-    // is this really required - does not make much sense to me
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "product")
     @Schema(hidden = true)
     @JsonIgnore
     private List<OrderItem> orders;
@@ -65,8 +61,8 @@ public class Product {
         this.productPicture = productPicture;
         this.isVegetarian = isVegetarian;
         this.allergens = allergens;
-        this.mainCategory = mainCategory;
-        this.subCategory = subCategory;
+        this.mainCategory = mainCategory.toString();
+        this.subCategory = subCategory.toString();
         this.isActive = isActive;
         this.createdBy = createdBy;
         this.orders = orders;
@@ -129,20 +125,20 @@ public class Product {
     }
     
    
-    public MainCategory getMainCategory() {
+    public String getMainCategory() {
         return mainCategory;
     }
 
     public void setMainCategory(MainCategory mainCategory) {
-        this.mainCategory = mainCategory;
+        this.mainCategory = mainCategory.toString();
     }
 
-    public SubCategory getSubCategory() {
+    public String getSubCategory() {
         return subCategory;
     }
 
     public void setSubCategory(SubCategory subCategory) {
-        this.subCategory = subCategory;
+        this.subCategory = subCategory.toString();
     }
 
     public boolean isActive() {

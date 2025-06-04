@@ -52,26 +52,26 @@ public class User {
     @Column(length = 10)
     private String zipcode;
     private String city;
-    // todo: add enum
-    @Enumerated(EnumType.STRING)
-    private CountryCode country;
+    private String country;
     private boolean isActive = true;
     private boolean isAdmin = false;
     @CreationTimestamp
     private Instant createdAt;
     @ManyToOne
+    @Schema(hidden = true)
     private User createdBy;
     @UpdateTimestamp
     private Instant lastUpdatedAt;
     @ManyToOne
-     private User lastUpdatedBy;
+    @Schema(hidden = true)
+    private User lastUpdatedBy;
     @OneToMany(mappedBy = "createdBy")
     private List<Order> orders;
 
     public User() {
     }
 
-    public User(File profilPicture, String username, String password, String salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, String country, boolean isActive, boolean isAdmin, User createdBy, List<Order> orders) {
+    public User(File profilPicture, String username, String password, String salutation, String salutationDetail, String firstname, String surname, String email, String phoneNumber, String address, String zipcode, String city, CountryCode countryCode, boolean isActive, boolean isAdmin, User createdBy, List<Order> orders) {
         this.profilPicture = profilPicture;
         this.username = username;
         this.password = password;
@@ -84,7 +84,7 @@ public class User {
         this.address = address;
         this.zipcode = zipcode;
         this.city = city;
-        this.country = CountryCode.valueOf(country);
+        this.country = countryCode.toString();
         this.isActive = isActive;
         this.isAdmin = isAdmin;
         this.createdBy = createdBy;
@@ -196,11 +196,11 @@ public class User {
     }
 
     public String getCountry() {
-        return country.toString();
+        return country;
     }
 
-    public void setCountry(String country) {
-        this.country = CountryCode.valueOf(country);
+    public void setCountry(CountryCode countryCode) {
+        this.country = countryCode.toString();
     }
 
     public boolean isActive() {

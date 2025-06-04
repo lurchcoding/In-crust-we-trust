@@ -6,18 +6,18 @@ import java.util.Map;
 import static at.incrustwetrust.pizzeria.entity.SubCategory.*;
 
 public enum MainCategory {
-    VORSPEISEN,
-    HAUPTSPEISEN,
-    NACHSPEISEN,
-    GETRAENKE;
+    STARTER,
+    MAIN_COURSE,
+    DESSERT,
+    BEVERAGE;
 
 
 
     private static final Map<MainCategory , List<SubCategory>> validSubCategories = Map.of(
-            MainCategory.VORSPEISEN, List.of(),
-            MainCategory.HAUPTSPEISEN, List.of(PIZZA,PASTA,BOWL),
-            MainCategory.NACHSPEISEN, List.of(),
-            MainCategory.GETRAENKE, List.of(ALKOHLFREI, BIER, WEIN)
+            MainCategory.STARTER, List.of(),
+            MainCategory.MAIN_COURSE, List.of(PIZZA,PASTA,BOWL),
+            MainCategory.DESSERT, List.of(),
+            MainCategory.BEVERAGE, List.of(ALCOHOL_FREE, BEER, WINE)
     );
 
     public static List<SubCategory> getValidSubCategories(MainCategory mainCat) {

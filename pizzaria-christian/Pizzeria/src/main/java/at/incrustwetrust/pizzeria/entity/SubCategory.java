@@ -6,8 +6,8 @@ public enum SubCategory {
     BOWL,
 
 
-    ALKOHLFREI,
-    BIER,
-    WEIN
+    ALCOHOL_FREE,
+    BEER,
+    WINE
 
 }

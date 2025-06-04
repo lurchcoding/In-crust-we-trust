@@ -1,14 +1,13 @@
 package at.incrustwetrust.pizzeria.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -51,9 +50,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "created_by")
     @Schema(hidden = true)
-    //@JsonIgnore
-    // hier geht es darum keine Endlosschleife für die json Rückgabe zu erzeugen
-       private User createdBy;
+    private User createdBy;
     // orders can not be manipulated - no updated Timestamps required
 
     @OneToMany(mappedBy = "order")

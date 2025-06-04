@@ -16,7 +16,6 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn (name = "order_id")
     @Schema(hidden = true)
-    @JsonIgnore
     private Order order;
     @ManyToOne
     @JoinColumn  (name = "product_id")
@@ -30,11 +29,11 @@ public class OrderItem {
     // = quantity * price/unit
     @NotNull
     @Column (nullable = false)
-    private Double price;
+    private double price;
 
     public OrderItem () {};
 
-    public OrderItem(Order order, Product product, String productName, int quantity, Double price) {
+    public OrderItem(Order order, Product product, String productName, int quantity, double price) {
         this.order = order;
         this.product = product;
         this.productName = productName;
@@ -82,11 +81,11 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

@@ -34,9 +34,9 @@ public class Allergen {
 
    public Allergen(){};
    
-   public Allergen(char abbreviation, String description, User createdBy) {
-      this.abbreviation = abbreviation;
-      this.description = description;
+   public Allergen(AllergenType allergenType, User createdBy) {
+      this.abbreviation = allergenType.name().toString().charAt(0);
+      this.description = allergenType.getDescription();
       this.createdBy = createdBy;
    }
 
