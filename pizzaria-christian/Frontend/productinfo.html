@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
@@ -27,22 +28,70 @@
             <div class="col-lg-6 col-md-8">
 
 
-                <h3 class="mb-4">Produktinfo</h3>
+                <h3 class="mb-3">Produktinfo</h3>
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h5 class="mb-0">Pizza Cardinale</h5>
                     <h5 class="mb-0">€ 11,90</h5>
                 </div>
 
-                <div class="text-start mb-4">
-                    <img
-                            src="./pictures/pizza-3000274_640.jpg"
-                            onerror="this.onerror=null; this.src='./pictures/pizza_icon_131067.png';"
-                            class="img-fluid w-50"
-                            alt="Produktbild"
-                    >
+                <!-- product foto -->
+                <div class="d-flex mb-4" >
+                    <div class="col-6 ">
+                        <img
+                                src="./pictures/pizza-3000274_640.jpg"
+                                onerror="this.onerror=null; this.src='./pictures/pizza_icon_131067.png';"
+                                class="img-fluid"
+                                alt="Produktbild"
+                                data-bs-toggle="modal"
+                                data-bs-target="#uploadProfilPictureModal"
+                        >
+                    </div>
+
+
+                    <!-- Modal product pictures upload-->
+                    <div class="modal fade " id="uploadProfilPictureModal" tabindex="-1" aria-labelledby="uploadProfilPictureModalLabel" aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content bg-dark text-light  ">
+                                <div class="modal-header   border-0">
+                                    <h1 class="modal-title text-light  fs-6" id="uploadProfilPictureModalLabel">Produktbild</h1>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body border-0 d-flex justify-content-center">
+                                    <img
+                                            src="./pictures/pizza-3000274_640.jpg"
+                                            onerror="this.onerror=null; this.src='./pictures/pizza_icon_131067.png';"
+                                            class="img-fluid"
+                                            alt="Produktbild"
+                                    >
+                                </div>
+                                <div class="modal-footer border-0">
+                                    <button type="button" class="btn btn-outline-light me-auto btn-sm " data-bs-dismiss="modal">Foto hinzufügen</button>
+                                    <button type="button" class="btn btn-outline-light btn-sm">Löschen</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- tooglers active / vegetarian-->
+                    <div class="col-6 ">
+                        <div class="d-flex justify-content-end align-items-center mb-2">
+                            <label class="form-check-label me-2" for="isVegetarian"> <i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> vegetarisch  </label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="isVegetarian">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center mb-2">
+                            <label class="form-check-label me-2" for="isProductActive">aktiv</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="isProductActive">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- product description -->
                 <div class="mb-4 fs-6">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci architecto aspernatur, autem beatae cum, cumque dolorum eveniet harum itaque magni minima natus non officia optio repellendus soluta voluptas voluptatem?
@@ -80,17 +129,12 @@
                     </select>
                 </div>
 
-               <div class="d-flex justify-content-end align-items-center mb-2">
-                    <label class="form-check-label me-2" for="isUserActive">aktiv</label>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="isUserActive">
-                    </div>
-                </div>
 
                 <div class="gap-2 d-flex justify-content-end mb-3">
                     <button class="btn btn-outline-secondary ">Löschen</button>
                     <button class="btn btn-primary">Speichern</button>
                 </div>
+
 
                 <div >
                     <table class="table fs-6 text-muted text-decoration-none">
@@ -103,7 +147,7 @@
                         <tr>
                             <td>letzte Änderung:</td>
                             <td>01.06.2025</td>
-                            <td class=" text-end" >Flo Wasweissich</td>
+                            <td class=" text-end" >Florian Engenhart</td>
                         </tr>
                         </tbody>
                     </table>
