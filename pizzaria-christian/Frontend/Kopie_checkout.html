@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../pizzaria-frontend/Checkout/checkout.css">
+</head>
+<body>
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="row g-5"> 
+                <div class="col-md-5 col-lg-4 order-2 order-md-2 order-lg-1"> 
+                    <h4 class="d-flex justify-content-between align-items-center mb-3"> <span class="">Bestelldetails</span></h4> 
+                        <table class="table table-striped mb-3" style="border: 1;">
+                            <thead>
+                                <tr>
+                                <th>Name</th>
+                                <th>Menge</th>
+                                <th class="text-end">Preis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td>Product name</td>
+                                <td class="text-center">1</td>
+                                <td class="text-end">€ 12.90</td>
+                                </tr>
+                                <tr>
+                                <td>Second product</td>
+                                <td class="text-center">1</td>
+                                <td class="text-end">€ 8,00</td>
+                                </tr>
+                                <tr>
+                                <td>Third item</td>
+                                <td class="text-center">1</td>
+                                <td class="text-end">€ 5,70</td>
+                                </tr>
+                                <tr>
+                                <th colspan="2">Gesamt (EURO)</th>
+                                <th class="text-end">€ 26,60</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <form class="card p-2"> 
+                        <div class="input-group"> 
+                            <hr class="my-4"> 
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Bestellen</button>                             
+                        </div> 
+                    </form> 
+                </div> 
+                <div class="col-md-7 col-lg-8"> 
+                    <h4 class="mb-3">Lieferdetails</h4> 
+                    <form class="needs-validation" novalidate=""> 
+                        <div class="row g-3"> <div class="col-sm-6"> 
+                            <label for="firstName" class="form-label">Vorname: </label> 
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required=""> 
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div> 
+                    </div> 
+                    <div class="col-sm-6"> 
+                        <label for="lastName" class="form-label">Nachname: </label> 
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required=""> 
+                    <div class="invalid-feedback">Valid last name is required.</div> 
+                </div> 
+                <div class="col-12"> 
+                    <label for="tel" class="form-label">Telefonnummer: </label> 
+                    <div class="input-group has-validation"> 
+                        <input type="tel" class="form-control" id="tel" placeholder="" required=""> 
+                        <div class="invalid-feedback">Your username is required.</div> 
+                    </div> 
+                </div>                
+                <div class="col-12"> 
+                    <label for="address" class="form-label">Address: </label> 
+                    <input type="text" class="form-control" id="address" placeholder="" required=""> 
+                    <div class="invalid-feedback">Please enter your shipping address.</div> 
+                </div> 
+                <div class="col-md-5"> 
+                    <label for="ort" class="form-label">Ort: </label> 
+                    <input type="text" class="form-control" id="ort">
+                </div> 
+                <div class="col-md-3"> 
+                    <label for="zip" class="form-label">Postleitzahl: </label> 
+                    <input type="text" class="form-control" id="zip" placeholder="" required=""> 
+                <div class="invalid-feedback">Zip code required.</div>
+                </div>
+                <div class="col-12">
+                    <label for="anmerkung" class="form-label">Anmerkungen zur Lieferung: </label>
+                    <textarea class="form-control" id="anmerkung" rows="3"></textarea>
+                </div>
+            </div> 
+        </div> 
+        </form> 
+        </div> 
+        </div>
+        </div>   
+    </main>
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
