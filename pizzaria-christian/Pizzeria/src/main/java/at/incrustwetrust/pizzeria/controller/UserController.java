@@ -1,5 +1,7 @@
 package at.incrustwetrust.pizzeria.controller;
 
+import at.incrustwetrust.pizzeria.dto.UserCreateDTO;
+import at.incrustwetrust.pizzeria.dto.UserUpdateDTO;
 import at.incrustwetrust.pizzeria.entity.User;
 import at.incrustwetrust.pizzeria.service.UserService;
 import jakarta.validation.Valid;
@@ -31,14 +33,14 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User create (@RequestBody @Valid User user)
+    public User create (@RequestBody @Valid UserCreateDTO dto)
     {
-        return this.userService.create(user);
+        return this.userService.create(dto,null);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus (HttpStatus.OK)
-    public User update (@RequestBody @Valid User user, @PathVariable String id)
+    public User update (@RequestBody @Valid UserUpdateDTO user, @PathVariable String id)
     {
         return this.userService.update(user, id);
     }

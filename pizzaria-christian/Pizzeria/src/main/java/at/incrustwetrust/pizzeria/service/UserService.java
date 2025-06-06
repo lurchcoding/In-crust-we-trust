@@ -1,88 +1,81 @@
 package at.incrustwetrust.pizzeria.service;
 
+import at.incrustwetrust.pizzeria.dto.UserCreateDTO;
+import at.incrustwetrust.pizzeria.dto.UserUpdateDTO;
 import at.incrustwetrust.pizzeria.entity.User;
 import at.incrustwetrust.pizzeria.exception.ObjectAlreadyExistsException;
 import at.incrustwetrust.pizzeria.exception.ObjectNotFoundException;
+import at.incrustwetrust.pizzeria.mapper.UserMapper;
 import at.incrustwetrust.pizzeria.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
-    // final because we only want it once
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public User create(User user) {
-        ifUsernameOrEmailAlreadyExistThrow (user);
-        // Username nor Email exists -> new User
+    public User create(UserCreateDTO dto, User createdBy) {
+        throwIfUsernameOrEmailExists(dto);
+        User user = UserMapper.toEntity(dto, createdBy);
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
         return userRepository.save(user);
     }
 
-
     public User read(String id) {
-       return userRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("Kein Benutzer mit der ID " + id + " vorhanden"));
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("No user found with ID: " + id));
     }
 
     public List<User> readAll() {
         return userRepository.findAll();
     }
-    public User delete (String id) {
 
-        User userCheck = userRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("Kein Benutzer mit der ID " + id + " vorhanden"));
-        userRepository.delete(userCheck);
-        return userCheck;
+    public User delete(String id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("No user found with ID: " + id));
+        userRepository.delete(user);
+        return user;
     }
 
-    public User update(User user, String id) {
-        User userToBeUpdated= userRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("BenutzerId nicht in der Datenbank"));
-        ifUsernameOrEmailAlreadyExistThrow (user, id );
-        return userRepository.save(user);
+    public User update(UserUpdateDTO dto, String id) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("No user found with ID: " + id));
 
+        throwIfUsernameOrEmailExists(dto, id);
+
+        UserMapper.updateEntity(dto, existingUser);
+
+        if (dto.getPassword() != null && !dto.getPassword().isBlank()) {
+            existingUser.setPassword(passwordEncoder.encode(dto.getPassword()));
+        }
+
+        return userRepository.save(existingUser);
     }
 
-
-    private void ifUsernameOrEmailAlreadyExistThrow (User user) {
-        Optional<User> userCheck = userRepository.findUserByEmail(user.getEmail());
-        if (userCheck.isPresent()) {
-            throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit dieser E-Mail vorhanden");
-        }
-        userCheck = userRepository.findUserByUsername(user.getUsername());
-        if (userCheck.isPresent()) {
-            throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit diesem Benutzernamen vorhanden");
-        }
+    private void throwIfUsernameOrEmailExists(UserCreateDTO dto) {
+        userRepository.findUserByEmail(dto.getEmail()).ifPresent(user -> {
+            throw new ObjectAlreadyExistsException("A user with this email already exists.");
+        });
+        userRepository.findUserByUsername(dto.getUsername()).ifPresent(user -> {
+            throw new ObjectAlreadyExistsException("A user with this username already exists.");
+        });
     }
 
-    // make sure that Email / Username does not exit BUT don't compare it with the own User`s mail / Username
-   /* private void ifUsernameOrEmailAlreadyExistThrow (User user, String userToBeUpdatedId) {
-        Optional<User> userCheck = userRepository.findUserByEmail(user.getEmail());
-        System.out.println(userToBeUpdatedId);
-        if (userCheck.isPresent() && !userCheck.get().getUserId().equals(userToBeUpdatedId)) {
-            throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit dieser E-Mail vorhanden");
-        }
-        userCheck = userRepository.findUserByUsername(user.getUsername());
-        if (userCheck.isPresent() && !userCheck.get().getUserId().equals(userToBeUpdatedId)) {
-            throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit diesem Benutzernamen vorhanden");
-        }
-    }*/
-
-    private void ifUsernameOrEmailAlreadyExistThrow (User user, String userToBeUpdatedId) {
-        Optional<User> userCheck = userRepository.findByEmailAndUserIdNot(user.getEmail(),userToBeUpdatedId);
-        if (userCheck.isPresent()) {
-            throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit dieser E-Mail vorhanden");
-        }
-        userCheck = userRepository.findUserByUsernameAndUserIdNot(user.getUsername(),userToBeUpdatedId);
-        if (userCheck.isPresent()) {
-            throw new ObjectAlreadyExistsException("Es ist bereits ein Benutzer mit diesem Benutzernamen vorhanden");
-        }
+    private void throwIfUsernameOrEmailExists(UserUpdateDTO dto, String userId) {
+        userRepository.findByEmailAndUserIdNot(dto.getEmail(), userId).ifPresent(user -> {
+            throw new ObjectAlreadyExistsException("Another user with this email already exists.");
+        });
+        userRepository.findUserByUsernameAndUserIdNot(dto.getUsername(), userId).ifPresent(user -> {
+            throw new ObjectAlreadyExistsException("Another user with this username already exists.");
+        });
     }
-
-
-
 }

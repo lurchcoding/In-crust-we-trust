@@ -33,6 +33,7 @@ public class User {
     @Pattern(regexp = ".*[a-z].*", message = "mindestens eine Kleinbuchstabe erforderlich")
     @Pattern(regexp = ".*[@$!%*?&].*", message = "mindestens eine Sonderzeichen erforderlich")
     private String password;
+
     private String salutation;
     @Size(min = 30, message = "Maximale Länge = 30 Zeichen")
     @Column(length = 30)
