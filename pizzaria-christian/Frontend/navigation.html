@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="navbar position-fixed top-1 end-0 " id="navbar-right">
+        <div class=" position-fixed top-0 mt-1 end-0 d-flex align-items-center " id="navbar-right">
 
             <button class="border-0  mb-1  bg-transparent" aria-label="Warenkorb">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
@@ -50,6 +50,31 @@
 
             <a href="#" class="btn btn-outline-primary  btn-sm mx-2 ">
                 Login</a>
+
+            <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                </button>
+
+                <!-- Dropdown-Menü -->
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" style="width: 200px;">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-basket" style="margin-right: 8px;"></i> Bestellungen
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-person" style="margin-right: 8px;"></i> Benutzerdaten
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-box-arrow-right" style="margin-right: 8px;"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

@@ -30,95 +30,184 @@
 
                 <h3 class="text-center my-4">Warenkorb</h3>
 
-                <!-- Artikelkarte -->
+
+
+                <!-- Artikelkarte TEST 1 -->
                 <div class="card  border-0 ">
-                    <div class="d-flex border-bottom mb-2 py-2 px-0 justify-content-between align-items-center flex-wrap ">
+                    <div class="d-flex border-bottom mb-2 pt-2 pb-3 px-0 justify-content-between align-items-center flex-wrap ">
 
                         <!-- Linker Bereich: Produktname -->
-                        <div class="fw-bold fs-6 me-auto">Pizza Cardinale <i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> <a href=""><i class="bi bi-info-circle-fill"></i></a> </div>
+                        <div class="d-flex fw-bold col-12 mb-1 col-sm-6 mb-sm-0  fs-6 justify-content-between">
+
+                            <div> Pizza Quattro Formaggi <i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> <a href=""><i class="bi bi-info-circle-fill"></i></a>  </div>
+
+                            <!-- Preis rechtsbündig bis small -->
+                            <div class=" d-sm-none fw-bold fs-6 text-end item-price ms-2 "  data-price1="11,90">€ 11,90</div>
+
+                        </div>
 
                         <!-- Rechter Bereich: Steuerung + Preis -->
-                        <div class="d-flex align-items-center ms-auto rounded-pill gap-1 .bg-light " >
+                        <div class="d-flex col-12 mt-2 col-sm-6 mt-sm-0 align-items-center justify-content-end ms-auto rounded-pill gap-1 .bg-light " >
 
-                            <div class="d-flex align-items-center px-2 py-1 rounded-pill" style="background-color: #f7f5f3;">
-                            <!-- Papierkorb -->
-                            <button class="btn p-0 border-0 bg-transparent" onclick="removeItem(this)" aria-label="Löschen">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="black" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5zm5  0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1  0v-6a.5.5 0 0 1 .5-.5z"/>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0  1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3a1 1 0 0 1 1-1h4a1
-                                    1 0 0 1 1 1h3a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882  4H4.118zM2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11z"/>
-                                </svg>
-                            </button>
 
-                            <!-- Minus -->
-                            <button class="btn p-0 border-0 bg-transparent" onclick="decreaseQty(this)" aria-label="Minus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
-                                    <path d="M3 8a.5.5 0 0 1
-              .5-.5h9a.5.5 0 0 1 0
-              1h-9A.5.5 0 0 1 3 8z"/>
-                                </svg>
-                            </button>
 
-                            <!-- Menge -->
-                            <span class="fw-bold fs-6">1</span>
 
-                            <!-- Plus -->
-                            <button class="btn p-0 border-0 bg-transparent" onclick="increaseQty(this)" aria-label="Plus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" viewBox="0 0 16 16">
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5               0 0 1 8 4z"/>
-                                </svg>
-                            </button>
+                            <div class="d-flex align-items-stretch px-1 py-0 me-2 rounded-pill" style="background-color: #f7f5f3;">
+                                <!-- Papierkorb -->
+                                <button class="btn d-flex align-items-center justify-content-center  border-0 bg-transparent" style="height: 100%;" onclick="removeItem(this)" aria-label="Löschen">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="black" viewBox="0 0 16 16" style="position: relative; top: -1px;">
+                                        <path d="M5.5 5.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5zm5  0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1  0v-6a.5.5 0 0 1 .5-.5z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0  1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3a1 1 0 0 1 1-1h4a1
+    1 0 0 1 1 1h3a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882  4H4.118zM2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11z"/>
+                                    </svg>
+                                </button>
+
+
                             </div>
-                            <!-- Preis rechtsbündig unter Gesamtsumme -->
-                            <div class="fw-bold fs-6 text-end item-price ms-2"  data-price="11,90">€ 11,90</div>
+
+                            <div class="d-flex align-items-center px-2 py-0 rounded-pill" style="background-color: #f7f5f3;">
+                                <!-- Minus -->
+                                <button class="btn p-0 border-0 bg-transparent" onclick="decreaseQty(this)" aria-label="Minus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
+                                        <path d="M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0  1h-9A.5.5 0 0 1 3 8z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Menge -->
+                                <span class="fw-bold px-1 fs-6">1</span>
+
+                                <!-- Plus -->
+                                <button class="btn p-0 border-0 bg-transparent" onclick="increaseQty(this)" aria-label="Plus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5               0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Preis rechtsbündig ab small -->
+                            <div class="d-none d-sm-block fw-bold fs-6 text-end item-price ms-2"  data-price2="11,90">€ 11,90</div>
                         </div>
 
+                    </div>
                 </div>
 
-                    <!-- Artikelkarte -->
-                    <div class="card  border-0 ">
-                        <div class="d-flex border-bottom mb-2 py-2 px-0 justify-content-between align-items-center flex-wrap ">
 
-                            <!-- Linker Bereich: Produktname -->
-                            <div class="fw-bold fs-6 me-auto">Pizza Cardinale <i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> <a href=""><i class="bi bi-info-circle-fill"></i></a> </div>
+                <!-- Artikelkarte TEST 2 -->
+                <div class="card  border-0 ">
+                    <div class="d-flex border-bottom mb-2 pt-2 pb-3 px-0 justify-content-between align-items-center flex-wrap ">
 
-                            <!-- Rechter Bereich: Steuerung + Preis -->
-                            <div class="d-flex align-items-center ms-auto rounded-pill gap-1 .bg-light " >
+                        <!-- Linker Bereich: Produktname -->
+                        <div class="d-flex fw-bold col-12 mb-1 col-sm-6 mb-sm-0  fs-6 justify-content-between">
 
-                                <div class="d-flex align-items-center px-2 py-1 rounded-pill" style="background-color: #f7f5f3;">
-                                    <!-- Papierkorb -->
-                                    <button class="btn p-0 border-0 bg-transparent" onclick="removeItem(this)" aria-label="Löschen">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="black" viewBox="0 0 16 16">
-                                            <path d="M5.5 5.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5zm5  0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1  0v-6a.5.5 0 0 1 .5-.5z"/>
-                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0  1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3a1 1 0 0 1 1-1h4a1
-                                    1 0 0 1 1 1h3a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882  4H4.118zM2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11z"/>
-                                        </svg>
-                                    </button>
+                            <div> Pizza Quattro Formaggi <i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> <a href=""><i class="bi bi-info-circle-fill"></i></a>  </div>
 
-                                    <!-- Minus -->
-                                    <button class="btn p-0 border-0 bg-transparent" onclick="decreaseQty(this)" aria-label="Minus">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
-                                            <path d="M3 8a.5.5 0 0 1
-              .5-.5h9a.5.5 0 0 1 0
-              1h-9A.5.5 0 0 1 3 8z"/>
-                                        </svg>
-                                    </button>
-
-                                    <!-- Menge -->
-                                    <span class="fw-bold fs-6">1</span>
-
-                                    <!-- Plus -->
-                                    <button class="btn p-0 border-0 bg-transparent" onclick="increaseQty(this)" aria-label="Plus">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" viewBox="0 0 16 16">
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5               0 0 1 8 4z"/>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <!-- Preis rechtsbündig unter Gesamtsumme -->
-                                <div class="fw-bold fs-6 text-end item-price ms-2"  data-price="11,90">€ 11,90</div>
-                            </div>
+                            <!-- Preis rechtsbündig bis small -->
+                            <div class=" d-sm-none fw-bold fs-6 text-end item-price ms-2 "  data-price1="11,90">€ 11,90</div>
 
                         </div>
+
+                        <!-- Rechter Bereich: Steuerung + Preis -->
+                        <div class="d-flex col-12 mt-2 col-sm-6 mt-sm-0 align-items-center justify-content-end ms-auto rounded-pill gap-1 .bg-light " >
+
+
+
+
+                            <div class="d-flex align-items-stretch px-1 py-0 me-2 rounded-pill" style="background-color: #f7f5f3;">
+                                <!-- Papierkorb -->
+                                <button class="btn d-flex align-items-center justify-content-center  border-0 bg-transparent" style="height: 100%;" onclick="removeItem(this)" aria-label="Löschen">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="black" viewBox="0 0 16 16" style="position: relative; top: -1px;">
+                                        <path d="M5.5 5.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5zm5  0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1  0v-6a.5.5 0 0 1 .5-.5z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0  1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3a1 1 0 0 1 1-1h4a1
+    1 0 0 1 1 1h3a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882  4H4.118zM2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11z"/>
+                                    </svg>
+                                </button>
+
+
+                            </div>
+
+                            <div class="d-flex align-items-center px-2 py-0 rounded-pill" style="background-color: #f7f5f3;">
+                                <!-- Minus -->
+                                <button class="btn p-0 border-0 bg-transparent" onclick="decreaseQty(this)" aria-label="Minus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
+                                        <path d="M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0  1h-9A.5.5 0 0 1 3 8z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Menge -->
+                                <span class="fw-bold px-1 fs-6">1</span>
+
+                                <!-- Plus -->
+                                <button class="btn p-0 border-0 bg-transparent" onclick="increaseQty(this)" aria-label="Plus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5               0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Preis rechtsbündig ab small -->
+                            <div class="d-none d-sm-block fw-bold fs-6 text-end item-price ms-2"  data-price2="11,90">€ 11,90</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Artikelkarte TEST 3 -->
+                <div class="card  border-0 ">
+                    <div class="d-flex border-bottom mb-2 pt-2 pb-3 px-0 justify-content-between align-items-center flex-wrap ">
+
+                        <!-- Linker Bereich: Produktname -->
+                        <div class="d-flex fw-bold col-12 mb-1 col-sm-6 mb-sm-0  fs-6 justify-content-between">
+
+                            <div> Pizza Quattro Formaggi <i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> <a href=""><i class="bi bi-info-circle-fill"></i></a>  </div>
+
+                            <!-- Preis rechtsbündig bis small -->
+                            <div class=" d-sm-none fw-bold fs-6 text-end item-price ms-2 "  data-price1="11,90">€ 11,90</div>
+
+                        </div>
+
+                        <!-- Rechter Bereich: Steuerung + Preis -->
+                        <div class="d-flex col-12 mt-2 col-sm-6 mt-sm-0 align-items-center justify-content-end ms-auto rounded-pill gap-1 .bg-light " >
+
+
+
+
+                            <div class="d-flex align-items-stretch px-1 py-0 me-2 rounded-pill" style="background-color: #f7f5f3;">
+                                <!-- Papierkorb -->
+                                <button class="btn d-flex align-items-center justify-content-center  border-0 bg-transparent" style="height: 100%;" onclick="removeItem(this)" aria-label="Löschen">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="black" viewBox="0 0 16 16" style="position: relative; top: -1px;">
+                                        <path d="M5.5 5.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5zm5  0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1  0v-6a.5.5 0 0 1 .5-.5z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0  1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3a1 1 0 0 1 1-1h4a1
+    1 0 0 1 1 1h3a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882  4H4.118zM2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11z"/>
+                                    </svg>
+                                </button>
+
+
+                            </div>
+
+                            <div class="d-flex align-items-center px-2 py-0 rounded-pill" style="background-color: #f7f5f3;">
+                                <!-- Minus -->
+                                <button class="btn p-0 border-0 bg-transparent" onclick="decreaseQty(this)" aria-label="Minus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
+                                        <path d="M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0  1h-9A.5.5 0 0 1 3 8z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Menge -->
+                                <span class="fw-bold px-1 fs-6">1</span>
+
+                                <!-- Plus -->
+                                <button class="btn p-0 border-0 bg-transparent" onclick="increaseQty(this)" aria-label="Plus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5               0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Preis rechtsbündig ab small -->
+                            <div class="d-none d-sm-block fw-bold fs-6 text-end item-price ms-2"  data-price2="11,90">€ 11,90</div>
+                        </div>
+
+                    </div>
+                </div>
+
+
 
                         <!-- Gesamtsumme -->
                 <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
