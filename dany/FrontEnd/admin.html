@@ -67,64 +67,7 @@
     </div>
   </div>
 
-  <script>
-    let allUsers = [];
-
-    function fetchUsers() {
-      fetch('/api/users')
-        .then(response => response.json())
-        .then(users => {
-          allUsers = users;
-          renderUsers(users);
-        });
-    }
-
-    function renderUsers(users) {
-      const tbody = document.getElementById('userTableBody');
-      tbody.innerHTML = '';
-      users.forEach(user => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${user.username}</td>
-          <td>${user.vorname}</td>
-          <td>${user.nachname}</td>
-          <td>${user.email}</td>
-          <td>${user.plz}</td>
-          <td><span class="status-badge ${user.aktiv ? 'status-aktiv' : 'status-deaktiviert'}">${user.aktiv ? 'aktiv' : 'deaktiviert'}</span></td>
-          <td>${user.admin ? 'ja' : 'nein'}</td>
-          <td>
-            <button class="btn btn-sm btn-warning" onclick="editUser('${user.id}')">Bearbeiten</button>
-            <button class="btn btn-sm btn-danger" onclick="deleteUser('${user.id}')">Löschen</button>
-          </td>
-        `;
-        tbody.appendChild(row);
-      });
-    }
-
-    function filterUsers() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = allUsers.filter(u =>
-        u.username.toLowerCase().includes(query) ||
-        u.vorname.toLowerCase().includes(query) ||
-        u.nachname.toLowerCase().includes(query) ||
-        u.email.toLowerCase().includes(query)
-      );
-      renderUsers(filtered);
-    }
-
-    function editUser(id) {
-      alert('Edit Benutzer mit ID: ' + id);
-    }
-
-    function deleteUser(id) {
-      if (confirm('Möchtest du diesen Benutzer wirklich löschen?')) {
-        fetch(`/api/users/${id}`, { method: 'DELETE' })
-          .then(() => fetchUsers());
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', fetchUsers);
-  </script>
+  <script src="admin.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

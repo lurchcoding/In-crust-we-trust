@@ -34,6 +34,9 @@
     #successMessage {
       display: none;
     }
+    #diversDetailsGroup {
+      display: none;
+    }
     ::placeholder {
       color: #6c757d;
       opacity: 1;
@@ -48,6 +51,23 @@
         Registrierung erfolgreich! Weiterleitung zum Login...
       </div>
       <form id="registrationForm">
+        
+        <!-- Anrede -->
+        <div class="mb-3">
+          <select class="form-select" id="anrede" required>
+            <option value="" disabled selected>Anrede wählen</option>
+            <option value="Herr">Herr</option>
+            <option value="Frau">Frau</option>
+            <option value="Divers">Divers</option>
+          </select>
+        </div>
+
+        <!-- Details für Divers -->
+        <div class="mb-3" id="diversDetailsGroup">
+          <input type="text" class="form-control" id="diversDetails" placeholder="Details zu Divers (optional)" minlength="5" maxlength="30">
+        </div>
+
+        <!-- Name -->
         <div class="row">
           <div class="col-md-6 mb-3">
             <input type="text" class="form-control" id="vorname" placeholder="Vorname" required>
@@ -57,18 +77,22 @@
           </div>
         </div>
 
+        <!-- Benutzername -->
         <div class="mb-3">
           <input type="text" class="form-control" id="username" placeholder="Benutzername" required>
         </div>
 
+        <!-- E-Mail -->
         <div class="mb-3">
           <input type="email" class="form-control" id="email" placeholder="E-Mail-Adresse" required>
         </div>
 
+        <!-- Telefon -->
         <div class="mb-3">
           <input type="tel" class="form-control" id="telefon" placeholder="Telefon">
         </div>
 
+        <!-- Passwort -->
         <div class="row">
           <div class="col-md-6 mb-3">
             <input type="password" class="form-control" id="passwort" placeholder="Passwort" required>
@@ -78,49 +102,38 @@
           </div>
         </div>
 
+        <!-- Land -->
         <div class="mb-3">
-          <input type="text" class="form-control" id="adresse" placeholder="Adresse">
-        </div>
-
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <input type="text" class="form-control" id="plz" placeholder="PLZ">
-          </div>
-          <div class="col-md-4 mb-3">
-            <input type="text" class="form-control" id="ort" placeholder="Ort">
-          </div>
-          <div class="col-md-4 mb-3">
-            <select class="form-select" id="land" required>
-              <option value="" disabled selected>Land wählen</option>
-              <option>Belgien</option>
-              <option>Bulgarien</option>
-              <option>Dänemark</option>
-              <option>Deutschland</option>
-              <option>Estland</option>
-              <option>Finnland</option>
-              <option>Frankreich</option>
-              <option>Griechenland</option>
-              <option>Irland</option>
-              <option>Italien</option>
-              <option>Kroatien</option>
-              <option>Lettland</option>
-              <option>Litauen</option>
-              <option>Luxemburg</option>
-              <option>Malta</option>
-              <option>Niederlande</option>
-              <option>Österreich</option>
-              <option>Polen</option>
-              <option>Portugal</option>
-              <option>Rumänien</option>
-              <option>Schweden</option>
-              <option>Slowakei</option>
-              <option>Slowenien</option>
-              <option>Spanien</option>
-              <option>Tschechien</option>
-              <option>Ungarn</option>
-              <option>Zypern</option>
-            </select>
-          </div>
+          <select class="form-select" id="land" required>
+            <option value="" disabled selected>Land wählen</option>
+            <option>Belgien</option>
+            <option>Bulgarien</option>
+            <option>Dänemark</option>
+            <option>Deutschland</option>
+            <option>Estland</option>
+            <option>Finnland</option>
+            <option>Frankreich</option>
+            <option>Griechenland</option>
+            <option>Irland</option>
+            <option>Italien</option>
+            <option>Kroatien</option>
+            <option>Lettland</option>
+            <option>Litauen</option>
+            <option>Luxemburg</option>
+            <option>Malta</option>
+            <option>Niederlande</option>
+            <option>Österreich</option>
+            <option>Polen</option>
+            <option>Portugal</option>
+            <option>Rumänien</option>
+            <option>Schweden</option>
+            <option>Slowakei</option>
+            <option>Slowenien</option>
+            <option>Spanien</option>
+            <option>Tschechien</option>
+            <option>Ungarn</option>
+            <option>Zypern</option>
+          </select>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Registrieren</button>
@@ -133,12 +146,24 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Erfolgsanzeige + Weiterleitung
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
       event.preventDefault();
       document.getElementById('successMessage').style.display = 'block';
       setTimeout(function() {
         window.location.href = 'login.html';
       }, 2500);
+    });
+
+    // Anzeigen/Verstecken von "Details Divers"
+    document.getElementById('anrede').addEventListener('change', function() {
+      const detailsGroup = document.getElementById('diversDetailsGroup');
+      if (this.value === 'Divers') {
+        detailsGroup.style.display = 'block';
+      } else {
+        detailsGroup.style.display = 'none';
+        document.getElementById('diversDetails').value = '';
+      }
     });
   </script>
 </body>
