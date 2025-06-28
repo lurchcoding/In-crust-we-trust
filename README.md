@@ -16,3 +16,7 @@ Dieses Repository ist ein experimenteller Test‑Branch (`slave`) des Projekts *
 ├── .gitignore # Ignorierte Dateien/Ordner (.vscode, node_modules, etc.)
 ├── GIT_WORKFLOW.md # Workflow‑Guidelines
 └── README.md # Diese Datei
+
+## 📘 Weitere Dokumentation
+
+- [➡ Git-Workflow-Dokumentation ansehen](./GIT_WORKFLOW.md)
