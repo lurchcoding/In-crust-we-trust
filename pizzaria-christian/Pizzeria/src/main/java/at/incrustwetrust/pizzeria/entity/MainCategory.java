@@ -9,7 +9,7 @@ public enum MainCategory {
     STARTER,
     MAIN_COURSE,
     DESSERT,
-    BEVERAGE;
+    DRINK;
 
 
 
@@ -17,7 +17,7 @@ public enum MainCategory {
             MainCategory.STARTER, List.of(),
             MainCategory.MAIN_COURSE, List.of(PIZZA,PASTA,BOWL),
             MainCategory.DESSERT, List.of(),
-            MainCategory.BEVERAGE, List.of(ALCOHOL_FREE, BEER, WINE)
+            MainCategory.DRINK, List.of(ALCOHOL_FREE, BEER, WINE, SPIRIT, COFFEE)
     );
 
     public static List<SubCategory> getValidSubCategories(MainCategory mainCat) {

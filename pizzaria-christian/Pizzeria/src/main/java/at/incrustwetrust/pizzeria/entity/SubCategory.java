@@ -8,6 +8,9 @@ public enum SubCategory {
 
     ALCOHOL_FREE,
     BEER,
-    WINE
+    WINE,
+    COFFEE,
+    SPIRIT,
+
 
 }
