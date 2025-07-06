@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
 INSERT INTO users (
     user_id, username, password, salutation, salutation_detail,
     firstname, surname, email, phone_number, zipcode, city, country,
@@ -148,3 +150,90 @@ FROM
         ORDER BY random()
         LIMIT floor(random() * 4 + 1)::int
         ) AS a ON TRUE;
+
+
+
+INSERT INTO orders
+(order_id, address, city, zipcode, firstname, surname, phone_number,
+ total, delivery_note, delivered_at, created_at, created_by)
+VALUES
+    (gen_random_uuid(), 'Hauptstraße 12', 'Linz', '4020', 'Hannah', 'Bukovec', '+43 676 1234567', 1, 'Bitte bei Nachbarn klingeln', '2025-06-20', '2025-06-19', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Mozartgasse 3', 'Graz', '8010', 'Paul', 'Pfischer', '+43 664 2345678', 1, 'Nicht vor 17 Uhr', '2025-06-18', '2025-06-17', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Salzachweg 22', 'Salzburg', '5020', 'Sophie', 'Schmid', '+43 650 3456789', 1, 'Torcode: 1234', '2025-06-15', '2025-06-14', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Bahnhofstraße 7', 'Wiener Neustadt', '2700', 'Monday', 'Maier', '+43 699 4567890', 1, 'Hund ist freundlich', '2025-06-12', '2025-06-11', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Marktplatz 5', 'Dornbirn', '6850', 'Anna', 'Alang', '+43 676 5678901', 1, 'Bitte anrufen', '2025-06-10', '2025-06-09', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Schillerstraße 9', 'Steyr', '4400', 'Nico', 'Hofer', '+43 664 6789012', 1, 'Hintereingang nutzen', '2025-06-08', '2025-06-07', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Feldweg 4', 'Villach', '9500', 'Lisa', 'Gruber', '+43 650 7890123', 1, 'Paketbox vorhanden', '2025-06-05', '2025-06-04', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Ringstraße 16', 'Tulln', '3430', 'David', 'Zuccatto', '+43 699 8901234', 1, 'Klingel defekt', '2025-06-02', '2025-06-01', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Poststraße 8', 'St. Pölten', '3100', 'Katharina', 'Baumhackl', '+43 676 9012345', 1, 'Türe ist offen', '2025-05-30', '2025-05-29', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Donaustraße 11', 'Eisenstadt', '7000', 'Morning', 'Müller', '+43 664 0123456', 1, 'Beim Briefkasten ablegen', '2025-05-28', '2025-05-27', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Blumengasse 2', 'Wien', '1190', 'Theresa', 'Chang', '+43 650 1234567', 1, 'Bitte leise klingeln', '2025-05-25', '2025-05-24', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Karawankenweg 13', 'Feldkirchen', '9560', 'Simon', 'Schuster', '+43 699 2345678', 1, 'Bei Garage abstellen', '2025-05-22', '2025-05-21', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Waldstraße 6', 'Baden', '2500', 'Nina', 'Wiener', '+43 676 3456789', 1, 'Lieferung hinterlegen', '2025-05-19', '2025-05-18', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Alpenstraße 14', 'Klagenfurt', '9020', 'Mario', 'Kunz', '+43 664 4567890', 1, 'Tor bitte schließen', '2025-05-16', '2025-05-15', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Donaugasse 21', 'Krems', '3500', 'Eva', 'Leitner', '+43 650 5678901', 1, 'Vorsicht Katze', '2025-05-13', '2025-05-12', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Seenweg 17', 'Bregenz', '6900', 'Markus', 'Wolf', '+43 699 6789012', 1, 'Blumen nicht beschädigen', '2025-05-10', '2025-05-09', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Obstweg 4', 'Amstetten', '3300', 'Laura', 'Egger', '+43 676 7890123', 1, 'Zaun ist offen', '2025-05-07', '2025-05-06', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Schlossallee 15', 'Mödling', '2340', 'Tom', 'Schmidt', '+43 664 8901234', 1, 'Bitte klopfen', '2025-05-04', '2025-05-03', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Flussgasse 19', 'Leoben', '8700', 'Julia', 'Berger', '+43 650 9012345', 1, 'Hund bitte nicht füttern', '2025-05-01', '2025-04-30', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Stadtplatz 20', 'Lienz', '9900', 'Sebastian', 'Müllner', '+43 699 0123456', 1, 'Lieferung ins Carport', '2025-04-28', '2025-04-27', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Grabenweg 9', 'Hallein', '5400', 'Johanna', 'Binder', '+43 676 1234568', 1, 'Bitte Rücksicht auf Kinder', '2025-04-25', '2025-04-24', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Talstraße 3', 'Zwettl', '3910', 'Fabian', 'Hofer', '+43 664 2345679', 1, 'Klingeln zweimal', '2025-04-22', '2025-04-21', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Weinweg 18', 'Stockerau', '2000', 'Isabella', 'Fuchs', '+43 650 3456780', 1, 'Durchfahrt freihalten', '2025-04-19', '2025-04-18', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Parkstraße 10', 'Traun', '4050', 'Matthias', 'Huber', '+43 699 4567891', 1, 'An Garage lehnen', '2025-04-16', '2025-04-15', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Mühlweg 5', 'Vöcklabruck', '4840', 'Verena', 'Schwarz', '+43 676 5678902', 1, 'Nicht beim Nachbarn abgeben', '2025-04-13', '2025-04-12', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Rathausplatz 11', 'Waidhofen', '3340', 'Alexander', 'Lang', '+43 664 6789013', 1, 'Klingel kaputt', '2025-04-10', '2025-04-09', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Kirchweg 7', 'Judenburg', '8750', 'Carina', 'Mayr', '+43 650 7890124', 1, 'Bitte nicht schellen', '2025-04-07', '2025-04-06', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Dorfplatz 2', 'Eferding', '4070', 'Leon', 'Koller', '+43 699 8901235', 1, 'Blumen gießen', '2025-04-04', '2025-04-03', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Bergstraße 8', 'Bad Ischl', '4820', 'Nadine', 'Kaiser', '+43 676 9012346', 1, 'Briefkasten nutzen', '2025-04-01', '2025-03-31', (SELECT user_id FROM users ORDER BY random() LIMIT 1)),
+    (gen_random_uuid(), 'Seegasse 13', 'Hermagor', '9620', 'Daniel', 'Schuster', '+43 664 0123457', 1, 'Hinter Haus abstellen', '2025-03-29', '2025-03-28', (SELECT user_id FROM users ORDER BY random() LIMIT 1));
+
+
+
+
+WITH random_orders AS (
+    SELECT
+        o.order_id,
+        p.product_id,
+        p.product_name,
+        p.price,
+        ROW_NUMBER() OVER (PARTITION BY o.order_id ORDER BY random()) AS rn
+    FROM orders o
+             CROSS JOIN products p
+)
+INSERT INTO order_item (order_item_id, order_id, product_id, quantity, product_name, price)
+SELECT
+    gen_random_uuid(),
+    ro.order_id,
+    ro.product_id,
+    1 AS quantity,
+    ro.product_name,
+    ro.price AS price
+FROM random_orders ro
+WHERE ro.rn <= FLOOR(random() * 5 + 1);
+
+WITH updated_items AS (
+    SELECT
+        oi.order_item_id,
+        FLOOR(random() * 4 + 1)::int AS quantity,
+        p.price
+    FROM order_item oi
+             JOIN products p ON oi.product_id = p.product_id
+)
+UPDATE order_item
+SET
+    quantity = updated_items.quantity,
+    price = updated_items.quantity * updated_items.price ::numeric(10, 2)
+FROM updated_items
+WHERE order_item.order_item_id = updated_items.order_item_id;
+
+UPDATE orders
+SET total = totals.sum_price
+FROM (
+         SELECT
+             order_id,
+             SUM(price)::numeric(10, 2) AS sum_price
+         FROM order_item
+         GROUP BY order_id
+     ) AS totals
+WHERE orders.order_id = totals.order_id;
