@@ -2,6 +2,7 @@ package at.incrustwetrust.pizzeria.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -50,6 +51,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "created_by")
     @Schema(hidden = true)
+    @JsonIgnore
     private User createdBy;
     // orders can not be manipulated - no updated Timestamps required
 

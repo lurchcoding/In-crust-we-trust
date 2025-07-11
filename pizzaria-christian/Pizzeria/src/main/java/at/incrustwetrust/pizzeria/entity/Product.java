@@ -40,11 +40,13 @@ public class Product {
     private Instant createdAt;
     @ManyToOne
     @Schema(hidden = true)
+    @JsonIgnore
     private User createdBy;
     @UpdateTimestamp
     private Instant lastUpdatedAt;
     @ManyToOne
     @Schema(hidden = true)
+    @JsonIgnore
     private User lastUpdatedBy;
 
     @OneToMany(mappedBy = "product")

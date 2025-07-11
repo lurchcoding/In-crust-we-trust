@@ -1,5 +1,6 @@
 package at.incrustwetrust.pizzeria.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -59,11 +60,13 @@ public class User {
     private Instant createdAt;
     @ManyToOne
     @Schema(hidden = true)
+    @JsonIgnore
     private User createdBy;
     @UpdateTimestamp
     private Instant lastUpdatedAt;
     @ManyToOne
     @Schema(hidden = true)
+    @JsonIgnore
     private User lastUpdatedBy;
     @OneToMany(mappedBy = "createdBy")
     private List<Order> orders;
