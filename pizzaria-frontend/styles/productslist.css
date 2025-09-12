@@ -1,6 +1,7 @@
 .card-view {
     display: none;
 }
+
 @media (max-width: 767.98px) {
     .table-view {
         display: none;
@@ -11,25 +12,30 @@
         gap: 1rem;
     }
 }
+
 .sticky-header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: #fff;
+    background-color: white;
+    padding: 0.5rem 0;
 }
+
 .sticky-filter {
     position: sticky;
     top: 3rem;
     z-index: 90;
-    background: #fff;
+    background-color: white;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
+
 th.sortable {
     cursor: pointer;
 }
+
 th.sortable::after {
-    content: ' ⇅';
+    content: ' \21C5';
     font-size: 0.7em;
     color: #aaa;
 }
