@@ -7,7 +7,7 @@ function updateTotal() {
 
         if (!priceElement || !qtyElement) return;
 
-               const unitPrice = parseFloat(priceElement.dataset.price.replace(',', '.'));
+        const unitPrice = parseFloat(priceElement.dataset.price.replace(',', '.'));
         const quantity = parseInt(qtyElement.innerText);
 
         if (!isNaN(unitPrice) && !isNaN(quantity)) {
@@ -21,13 +21,11 @@ function updateTotal() {
 function updateItemTotal(button, qty) {
     const card = button.closest('.card');
     const price = card.querySelector('.item-price');
-    const priceXQtyFloat = qty*parseFloat(price.dataset.price.replace(',', '.'));
+    const priceXQtyFloat = qty * parseFloat(price.dataset.price.replace(',', '.'));
     card.querySelectorAll('.item-price').forEach(itemPrice => {
         itemPrice.innerText = '€ ' + priceXQtyFloat.toFixed(2).replace('.', ',');
     });
-
 }
-
 
 function removeItem(button) {
     const card = button.closest('.card');
@@ -59,5 +57,3 @@ function increaseQty(button) {
 
 // calculate total when site is loaded
 document.addEventListener("DOMContentLoaded", updateTotal);
-
-
