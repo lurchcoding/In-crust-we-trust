@@ -5,6 +5,10 @@
     position: relative;
 }
 
+.space {
+    margin-top: 55px;
+}
+
 .icon-dark {
     color: black;
 }

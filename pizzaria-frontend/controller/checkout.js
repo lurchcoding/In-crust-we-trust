@@ -1,3 +1,7 @@
+$(function() {
+      $('#footer').load('../views/footer.html');
+    });
+
 const orderItems = [
     { name: 'Product name', quantity: 1, price: 12 },
     { name: 'Second product', quantity: 1, price: 8 },

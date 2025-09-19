@@ -17,3 +17,7 @@ document.getElementById('anrede').addEventListener('change', function() {
         document.getElementById('diversDetails').value = '';
     }
 });
+
+$(function() {
+      $('#footer').load('../views/footer.html');
+    });

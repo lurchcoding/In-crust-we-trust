@@ -13,23 +13,8 @@
 </head>
 <body>
 <header>
-        <nav class="navbar bg-body py-0">
-            <div class="container-fluid d-inline-flex align-items-center">
-                <a class="navbar-brand" href="">
-                  <h1 class="mb-0 d-inline-flex align-items-center" id="dancing-script">
-                    <div class="flex-inline align-items-center">
-                      <i class="bi bi-caret-left fs-3"></i>
-                    </div>              
-                    <img style="height: 45px; width: 45px;" class="me-2" src="./pictures/pizza_icon_131067.png" alt="pizzaicon"></i>Crust Me
-                  </h1>
-                </a>             
-                <div class="d-flex">
-                    <a class="nav-link active me-2 fs-3 mx-5" href="#"><i class="bi bi-cart4"></i></a>
-                    <button class="btn active fs-3 ms-5 me-2 py-0" href="#">Login</button>
-                </div>               
-            </div>
-        </nav>
-        <div class="navbar bg-body-tertiary">
+    <nav id="navigation"></nav>    
+        <div class="navbar bg-body-tertiary space">
             <div class="container-fluid">
                 <div class="d-flex">
                     <button class="navbar-toggler justify-content-start me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -57,8 +42,8 @@
                                             <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-2-2">Pasta</a>
                                             <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-2-3">Bowl</a>
                                         </div>
-                                        <a class="nav-link fw-semibold text-dark p-2" style="background-color: white;" href="#item-3"><i class="bi bi-cake-fill"></i> Nachspeise</a> 
-                                        <a class="nav-link fw-semibold text-dark p-2" style="background-color: white;" href="#item-4"><i class="bi bi-cup-straw"></i> Getränke</a>            
+                                            <a class="nav-link fw-semibold text-dark p-2" style="background-color: white;" href="#item-3"><i class="bi bi-cake-fill"></i> Nachspeise</a> 
+                                            <a class="nav-link fw-semibold text-dark p-2" style="background-color: white;" href="#item-4"><i class="bi bi-cup-straw"></i> Getränke</a>            
                                         <div class="nav flex-column ms-3">
                                             <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-4-1">Alkoholfrei</a>
                                             <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-4-2">Bier</a>
@@ -99,7 +84,12 @@
         </div>
     </div>
 </main>
-<footer></footer>
+<footer id="footer"></footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-7Y7zE8fYwi0QpDHevN3xDSHLVYRIlnDJr8XUGLF6fC0=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../controller/navigation.js"></script>
+<script src="../controller/userlist.js"></script>
+
 </body>
 </html>
