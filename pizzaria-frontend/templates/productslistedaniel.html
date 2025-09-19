@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Menü</title>
+  <link rel="stylesheet" href="../styles/productslistdaniel.css">
+</head>
+<body>
+  <header>
+    <h1>Unser Menü</h1>
+    <div class="filters">
+      <select id="categoryFilter">
+        <option value="ALL">Alle Kategorien</option>
+      </select>
+      <select id="subCategoryFilter">
+        <option value="ALL">Alle Unterkategorien</option>
+      </select>
+      <select id="sortSelect">
+        <option value="NAME_ASC">Name A-Z</option>
+        <option value="NAME_DESC">Name Z-A</option>
+        <option value="PRICE_ASC">Preis aufsteigend</option>
+        <option value="PRICE_DESC">Preis absteigend</option>
+      </select>
+    </div>
+  </header>
+
+  <main id="productContainer">
+    <!-- Produkte werden hier eingefügt -->
+  </main>
+
+  <script src="../scripts/productslistdaniel.js"></script>
+</body>
+</html>
