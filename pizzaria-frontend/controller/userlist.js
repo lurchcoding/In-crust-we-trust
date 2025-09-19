@@ -3,7 +3,7 @@ $(document).ready(function() {
     let currentSort = { key: "", asc: true };
 
     // Beispiel-Navigation laden
-    $("#navigation").load("../templates/navigation.html");
+    $("#navigation").load("../views/navigation.html");
 
     async function fetchData(endpoint) {
         // Platzhalter: In echter App AJAX fetch
