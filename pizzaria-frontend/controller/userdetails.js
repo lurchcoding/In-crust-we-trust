@@ -1,3 +1,6 @@
+$(function() {
+      $('#footer').load('../views/footer.html');
+    });
 $(document).ready(function() {
     // Zeige Detailsfeld, wenn "Divers" ausgewählt wird
     $('#anrede').on('change', function() {

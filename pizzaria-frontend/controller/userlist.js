@@ -4,6 +4,9 @@ $(document).ready(function() {
 
     // Beispiel-Navigation laden
     $("#navigation").load("../views/navigation.html");
+    $(function() {
+      $('#footer').load('../views/footer.html');
+    });
 
     async function fetchData(endpoint) {
         // Platzhalter: In echter App AJAX fetch
