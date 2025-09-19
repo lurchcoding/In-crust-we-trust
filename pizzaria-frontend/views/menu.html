@@ -13,67 +13,68 @@
 </head>
 <body>
 <header>
-    <nav class="navbar bg-body py-0">
-        <div class="container-fluid d-inline-flex align-items-center">
-            <a class="navbar-brand" href="#">
-                <h1 class="mb-0 d-inline-flex align-items-center" id="dancing-script">
+        <nav class="navbar bg-body py-0">
+            <div class="container-fluid d-inline-flex align-items-center">
+                <a class="navbar-brand" href="">
+                  <h1 class="mb-0 d-inline-flex align-items-center" id="dancing-script">
                     <div class="flex-inline align-items-center">
-                        <i class="bi bi-caret-left fs-3"></i>
-                    </div>
-                    <img style="height: 45px; width: 45px;" class="me-2" src="../pictures/pizza_icon_131067.png" alt="pizzaicon">Crust Me
-                </h1>
-            </a>
-            <div class="d-flex">
-                <a class="nav-link active me-2 fs-3 mx-5" href="#"><i class="bi bi-cart4"></i></a>
-                <button class="btn active fs-3 ms-5 me-2 py-0">Login</button>
+                      <i class="bi bi-caret-left fs-3"></i>
+                    </div>              
+                    <img style="height: 45px; width: 45px;" class="me-2" src="./pictures/pizza_icon_131067.png" alt="pizzaicon"></i>Crust Me
+                  </h1>
+                </a>             
+                <div class="d-flex">
+                    <a class="nav-link active me-2 fs-3 mx-5" href="#"><i class="bi bi-cart4"></i></a>
+                    <button class="btn active fs-3 ms-5 me-2 py-0" href="#">Login</button>
+                </div>               
             </div>
-        </div>
-    </nav>
-    <div class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="d-flex">
-                <button class="navbar-toggler justify-content-start me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <i class="bi bi-funnel icon-dark"></i>
-                </button>
-                <div class="d-flex align-items-center ms-2">
-                    <label class="switch m-auto ms-1">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                    <p id="vegbtn" class="m-auto ms-2"><i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> vegetarisch</p>
-                </div>
-                <div class="offcanvas offcanvas-start" style="width: 300px;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title fs-3 fw-bold" id="offcanvasNavbarLabel">Menü</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </nav>
+        <div class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="d-flex">
+                    <button class="navbar-toggler justify-content-start me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                        <i class="bi bi-funnel icon-dark"></i>
+                    </button>
+                    <div class="d-flex p-auto">
+                        <label class="switch m-auto ms-1">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <p id="vegbtn" class="m-auto ms-2 "><i class="bi bi-leaf-fill" style="color: rgb(0, 170, 0);"></i> vegetarisch</p>  
                     </div>
-                    <div class="offcanvas-body">
-                        <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4">
-                            <nav class="nav nav-pills flex-column">
-                                <a class="nav-link active fw-semibold text-dark p-2" href="#item-1"><i class="bi bi-cup-hot-fill"></i> Vorspeisen</a>
-                                <a class="nav-link fw-semibold text-dark p-2" href="#item-2"><i class="bi bi-fork-knife"></i> Hauptspeisen</a>
-                                <div class="nav flex-column ms-3">
-                                    <a class="nav-link my-1 text-dark p-0 ps-1" href="#item-2-1">Pizza</a>
-                                    <a class="nav-link my-1 text-dark p-0 ps-1" href="#item-2-2">Pasta</a>
-                                    <a class="nav-link my-1 text-dark p-0 ps-1" href="#item-2-3">Bowl</a>
-                                </div>
-                                <a class="nav-link fw-semibold text-dark p-2" href="#item-3"><i class="bi bi-cake-fill"></i> Nachspeise</a>
-                                <a class="nav-link fw-semibold text-dark p-2" href="#item-4"><i class="bi bi-cup-straw"></i> Getränke</a>
-                                <div class="nav flex-column ms-3">
-                                    <a class="nav-link my-1 text-dark p-0 ps-1" href="#item-4-1">Alkoholfrei</a>
-                                    <a class="nav-link my-1 text-dark p-0 ps-1" href="#item-4-2">Bier</a>
-                                    <a class="nav-link my-1 text-dark p-0 ps-1" href="#item-4-3">Wein</a>
-                                </div>
-                            </nav>
-                        </nav>
-                    </div>
-                </div>
-                <div>
-                    <input class="form-control me-2" type="text" placeholder="Suche:">
-                </div>
+                    <div class="offcanvas offcanvas-start" style="width: 300px;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title fs-3 fw-bold" id="offcanvasNavbarLabel">Menü</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                          <div class="offcanvas-body">
+                                <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4">
+                                    <nav class="nav nav-pills flex-column">
+                                        <a class="nav-link active fw-semibold text-dark p-2" style="background-color:white"; href="#item-1"><i class="bi bi-cup-hot-fill"></i> Vorspeisen</a>
+                                        <a class="nav-link active fw-semibold text-dark p-2" style="background-color: white"; href="#item-2"><i class="bi bi-fork-knife"></i> Hauptspeisen</a>
+                                        <div class="nav flex-column ms-3">
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-2-1">Pizza</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-2-2">Pasta</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-2-3">Bowl</a>
+                                        </div>
+                                        <a class="nav-link fw-semibold text-dark p-2" style="background-color: white;" href="#item-3"><i class="bi bi-cake-fill"></i> Nachspeise</a> 
+                                        <a class="nav-link fw-semibold text-dark p-2" style="background-color: white;" href="#item-4"><i class="bi bi-cup-straw"></i> Getränke</a>            
+                                        <div class="nav flex-column ms-3">
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-4-1">Alkoholfrei</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-4-2">Bier</a>
+                                            <a class="nav-link my-1 text-dark p-0 ps-1" style="background-color: white;" href="#item-4-3">Wein</a>
+                                        </div>
+                                    </nav>
+                                </nav>
+                            </div>                
+                        </div>
+                    </div> 
+                  <div>
+                     <input class="form-control me-2" type="text" placeholder="Suche:">
+                  </div>             
+                </div>               
             </div>
-        </div>
-    </div>
+        </div>       
 </header>
 <main>
     <div class="container">
