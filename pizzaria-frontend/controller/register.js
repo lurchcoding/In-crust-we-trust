@@ -18,6 +18,7 @@ document.getElementById('anrede').addEventListener('change', function() {
         detailsGroup.style.display = 'none';
         document.getElementById('diversDetails').value = '';
     }
+
 });*/
 
 activateValidation()
@@ -62,4 +63,9 @@ function handleFormSubmit(event) {
         return;
     }
 }
+});
+
+$(function() {
+      $('#footer').load('../views/footer.html');
+    });
 
