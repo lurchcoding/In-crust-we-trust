@@ -24,7 +24,8 @@ public class User {
     private File profilPicture;
     @NotBlank
     @Column (nullable = false, unique = true)
-    @Size(min = 5 , message = "Der Username muss mindestens 5 Zeichen lang sein")
+    @Size(min = 5 , message = "mindestens 5 Zeichen erforderlich")
+    @Size(max = 30, message = "Maximale Länge = 30 Zeichen")
     private String username;
     @NotBlank
     @Column (nullable = false)
@@ -36,16 +37,25 @@ public class User {
     private String password;
 
     private String salutation;
-    @Size(min = 30, message = "Maximale Länge = 30 Zeichen")
+    @Size(min = 4 , message = "mindestens 4 Zeichen erforderlich")
+    @Size(max = 30, message = "Maximale Länge = 30 Zeichen")
     @Column(length = 30)
     private String salutationDetail;
+    @Size(min = 3 , message = "mindestens 3 Zeichen erforderlich")
+    @Size(max = 30, message = "Maximale Länge = 30 Zeichen")
     private String firstname;
+    @Size(min = 2 , message = "mindestens 2 Zeichen erforderlich")
+    @Size(max = 100, message = "Maximale Länge = 100 Zeichen")
     private String surname;
     @Email
     @NotBlank
+    @Size(min = 5 , message = "mindestens 5 Zeichen erforderlich")
+    @Size(max = 100, message = "Maximale Länge = 100 Zeichen")
     @Column (nullable = false, unique = true)
     private String email;
-    //todo: maybe add validation
+    //todo: maybe add Po validation
+    @Size(min = 7 , message = "mindestens 7 Zeichen erforderlich")
+    @Size(max = 30, message = "Maximale Länge = 30 Zeichen")
     private String phoneNumber;
     private String address;
     // can be worldwide - means alphanumeric
