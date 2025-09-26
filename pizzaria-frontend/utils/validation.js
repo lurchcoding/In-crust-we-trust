@@ -1,10 +1,25 @@
 'use strict';
 
 
-function validateStringInput(fieldId, min, max, needsSpecial, needsCapLetter, needsSmallLetter, isEmail) {
+function validateStringInput(
+    fieldId,
+    isRequired = true,
+    min,
+    max,
+    needsSpecial = false,
+    needsCapLetter = false,
+    needsSmallLetter = false,
+    isEmail = false
+) {
     const element = document.getElementById(fieldId);
+    if (!element) return true;
     const value = element.value.trim();
     let messages = [];
+
+    if (!isRequired && value.length === 0) {
+        clearValidation(element);
+        return true;
+    }
 
     if (min !== undefined && value.length < min) {
         messages.push(`Mindestens ${min} Zeichen erforderlich.`);
@@ -35,7 +50,7 @@ function validateStringInput(fieldId, min, max, needsSpecial, needsCapLetter, ne
         }
     }
     if (isEmail) {
-        const emailRegex = /[@]/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
             messages.push("Keine gültige Email-Adresse");
         }
@@ -46,35 +61,53 @@ function validateStringInput(fieldId, min, max, needsSpecial, needsCapLetter, ne
         console.log("Validation false", element , messages)
         return false;
     } else {
-        element.classList.remove('is-invalid');
-        const feedback = element.parentElement.querySelector('.validation-feedback-ok, .validation-feedback-nok');
-        feedback.classList.remove('validation-feedback-nok');
-        feedback.classList.add('validation-feedback-ok');
-        console.log("Validation true")
+        clearValidation(element);
         return true;
     }
 }
 
 
+function checkPasswordEquality(fieldIdInitial, fieldIdRepetition) {
+    const element1 = document.getElementById(fieldIdInitial);
+    const value1 = element1.value.trim();
+    let messages = [];
+    const element2 = document.getElementById(fieldIdRepetition);
+    const value2 = element2.value.trim();
+
+    if (value1 !== value2) {
+        messages.push(`Die Passwörter sind nicht gleich.`);
+    }
+
+    if (messages.length > 0) {
+        showInvalidFeedback(element2,  messages.join("\n"));
+        console.log("Validation false", element2 , messages)
+        return false;
+    } else {
+        clearValidation(element2);
+        return true;
+    }
+}
+
+
+function clearValidation(field) {
+    field.classList.remove('is-valid', 'is-invalid');
+    const feedback = field.parentElement.querySelector('.validation-feedback-ok, .validation-feedback-nok');
+    if (feedback) {
+        feedback.textContent = '';
+        feedback.classList.remove('validation-feedback-nok');
+        feedback.classList.add('validation-feedback-ok');
+    }
+}
+
+
 function showInvalidFeedback(field, message) {
+    field.classList.remove('is-valid');
     field.classList.add('is-invalid');
     const feedback = field.parentElement.querySelector('.validation-feedback-ok, .validation-feedback-nok');
-    console.log ("howInvalidFeedback")
-    console.log (feedback)
-    console.log (feedback.classList)
-    if (feedback &&
-        (feedback.classList.contains('validation-feedback-ok')
-       || (feedback.classList.contains('validation-feedback-nok'))))
-    {
+    if (feedback) {
         feedback.textContent = message;
-        console.log (feedback)
-        console.log (feedback.textContent)
-        console.log (feedback.classList)
-        if (feedback.classList.contains('validation-feedback-ok')){
-            feedback.classList.remove('validation-feedback-ok');
-            feedback.classList.add('validation-feedback-nok');
-        }
-        console.log (feedback.classList)
+        feedback.classList.remove('validation-feedback-ok');
+        feedback.classList.add('validation-feedback-nok');
     }
 }
 
