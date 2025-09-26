@@ -20,7 +20,7 @@
         </div>
         <form id="registrationForm" class="needs-validation" novalidate>
             <div class="mb-3">
-                <select class="form-select" id="anrede" required>
+                <select class="form-select" id="anrede">
                     <option value="" disabled selected>Anrede wählen</option>
                     <option value="Herr">Herr</option>
                     <option value="Frau">Frau</option>
@@ -29,56 +29,50 @@
             </div>
 
             <div class="mb-3" id="diversDetailsGroup" style="display:none;">
-                <input type="text" class="form-control" id="diversDetails" placeholder="Details zu Divers (optional)"
-                       minlength="4" maxlength="30">
+                <input type="text" class="form-control" id="diversDetails" placeholder="Details zu Divers (optional)">
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" id="vorname" placeholder="Vorname" pattern=".*\S.*"
-                           minlength="3" maxlength="30">
+                    <input type="text" class="form-control" id="vorname" placeholder="Vorname">
                     <div class="validation-feedback-ok mt-1">
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" id="nachname" placeholder="Nachname" pattern=".*\S.*"
-                           minlength="2" maxlength="100">
+                    <input type="text" class="form-control" id="nachname" placeholder="Nachname" >
                     <div class="validation-feedback-ok mt-1">
                     </div>
                 </div>
             </div>
 
             <div class="mb-3">
-                <input type="text" class="form-control" id="username" placeholder="Benutzername" pattern=".*\S.*"
-                       minlength="5" maxlength="30">
+                <input type="text" class="form-control" id="username" placeholder="Benutzername*"  required>
                 <div class="validation-feedback-ok mt-1">
                 </div>
             </div>
 
             <div class="mb-3">
-                <input type="email" class="form-control" id="email" placeholder="E-Mail-Adresse" required
-                       minlength="5" maxlength="100">
+                <input type="email" class="form-control" id="email" placeholder="E-Mail-Adresse*" required>
                 <div class="validation-feedback-ok mt-1">
                 </div>
             </div>
 
 
             <div class="mb-3">
-                <input type="tel" class="form-control" id="telefon" placeholder="Telefon" pattern=".*\S.*"
-                       minlength="7" maxlength="30">
+                <input type="tel" class="form-control" id="telefon" placeholder="Telefon" >
                 <div class="validation-feedback-ok mt-1">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <input type="password" class="form-control" id="passwort" placeholder="Passwort" required>
+                    <input type="password" class="form-control" id="passwort" placeholder="Passwort*" required>
                     <div class="validation-feedback-ok mt-1">
                     </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    <input type="password" class="form-control" id="passwortWdh" placeholder="Passwort wiederholen"
+                    <input type="password" class="form-control" id="passwortWdh" placeholder="Passwort wiederholen*"
                            required>
                     <div class="validation-feedback-ok mt-1">
                     </div>
@@ -87,7 +81,7 @@
             </div>
 
             <div class="mb-3">
-                <select class="form-select" id="land" required>
+                <select class="form-select" id="land" >
                     <option value="" disabled selected>Land wählen</option>
                     <option>Belgien</option>
                     <option>Bulgarien</option>
@@ -126,10 +120,11 @@
         </form>
     </div>
 </div>
-<footer id="foorer"></footer>
+<footer id="footer"></footer>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="../controller/navigation.js"></script>
 <script src="../utils/validation.js"></script>
+<script src="../utils/formUI.js"></script>
 <script src="../controller/register.js"></script>
 <script src="../controller/footer.js"></script>
 
