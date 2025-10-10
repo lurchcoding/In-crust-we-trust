@@ -27,15 +27,23 @@ public class Order {
     private double total;
     @NotBlank
     @Column (nullable = false)
+    @Size(min = 3 , message = "mindestens 3 Zeichen erforderlich")
+    @Size(max = 30, message = "Maximale Länge = 30 Zeichen")
     private String firstname;
     @NotBlank
     @Column (nullable = false)
+    @Size(min = 2 , message = "mindestens 2 Zeichen erforderlich")
+    @Size(max = 100, message = "Maximale Länge = 100 Zeichen")
     private String surname;
     @NotBlank
     @Column (nullable = false)
+    @Size(min = 7 , message = "mindestens 7 Zeichen erforderlich")
+    @Size(max = 30, message = "Maximale Länge = 30 Zeichen")
     private String phoneNumber;
     @NotBlank
     @Column (nullable = false)
+    @Size(min = 7 , message = "mindestens 7 Zeichen erforderlich")
+    @Size(max = 100, message = "Maximale Länge = 30 Zeichen")
     private String address;
     // can be worldwide - means alphanumeric
     @NotBlank

@@ -88,6 +88,82 @@ function checkPasswordEquality(fieldIdInitial, fieldIdRepetition) {
     }
 }
 
+function validateNotEmpty(fieldId) {
+    const element = document.getElementById(fieldId);
+    if (!element) return true;
+    const value = element.value.trim();
+    let messages = [];
+
+    if (value.length === 0) {
+        messages.push("Dieses Feld darf nicht leer sein.");
+    }
+
+    if (messages.length > 0) {
+        showInvalidFeedback(element, messages.join("\n"));
+        console.log("Validation false", element, messages);
+        return false;
+    } else {
+        clearValidation(element);
+        return true;
+    }
+}
+
+function validateNumeric(fieldId, isRequired = true) {
+    const element = document.getElementById(fieldId);
+    if (!element) return true;
+    const raw = element.value.trim();
+    let messages = [];
+
+    if (!isRequired && raw.length === 0) {
+        clearValidation(element);
+        return true;
+    }
+
+    if (raw.length === 0) {
+        messages.push("Dieses Feld darf nicht leer sein.");
+    } else {
+        const numericRegex = /^-?\d+(?:[.,]\d+)?$/;
+        if (!numericRegex.test(raw)) {
+            messages.push("Keine gültige Zahl.");
+        }
+    }
+
+    if (messages.length > 0) {
+        showInvalidFeedback(element, messages.join("\n"));
+        console.log("Validation false", element, messages);
+        return false;
+    } else {
+        clearValidation(element);
+        return true;
+    }
+}
+
+function validateSelect(fieldId, isRequired = true) {
+    const element = document.getElementById(fieldId);
+    if (!element) return true;
+    const value = (element.value || "").trim();
+    let messages = [];
+
+    if (!isRequired && value.length === 0) {
+        clearValidation(element);
+        return true;
+    }
+
+    if (value.length === 0) {
+        messages.push("Bitte eine Auswahl treffen.");
+    }
+
+    if (messages.length > 0) {
+        showInvalidFeedback(element, messages.join("\n"));
+        console.log("Validation false", element, messages);
+        return false;
+    } else {
+        clearValidation(element);
+        return true;
+    }
+}
+
+
 
 function clearValidation(field) {
     field.classList.remove('is-valid', 'is-invalid');
