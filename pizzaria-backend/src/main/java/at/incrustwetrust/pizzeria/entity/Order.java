@@ -33,9 +33,13 @@ public class Order {
     private String surname;
     @NotBlank
     @Column (nullable = false)
+    @Size(min = 7 , message = "mindestens 7 Zeichen erforderlich")
+    @Size(max = 30, message = "Maximale Länge = 30 Zeichen")
     private String phoneNumber;
     @NotBlank
     @Column (nullable = false)
+    @Size(min = 7 , message = "mindestens 7 Zeichen erforderlich")
+    @Size(max = 100, message = "Maximale Länge = 30 Zeichen")
     private String address;
     // can be worldwide - means alphanumeric
     @NotBlank
