@@ -1,26 +1,159 @@
-$(function() {
-      $('#footer').load('../views/footer.html');
+$(function () {
+    $('#footer').load('../views/footer.html');
+});
+
+'use strict';
+
+
+let hasSubmittedForm = false;
+let liveCheckFields = false;
+
+
+initPage();
+
+function initPage() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('userForm');
+        changeEnterToTab(form);
+
+        setupDiversDetails();
+        form.addEventListener('submit', handleFormSubmit);
+
     });
-$(document).ready(function() {
-    // Zeige Detailsfeld, wenn "Divers" ausgewählt wird
-    $('#anrede').on('change', function() {
-        if ($(this).val() === 'Divers') {
-            $('#diversDetailsGroup').slideDown(200);
+}
+
+function handleFormSubmit(event) {
+    event.preventDefault(); // no standard HTML Checks are done
+    const form = event.target; // gets the current form
+    const isValid = validateForm();
+
+    form.classList.add('was-validated'); // shows Bootstrap styles
+
+    // settings after first submit
+    if (!hasSubmittedForm) {
+        hasSubmittedForm = true;
+        bindLiveValidation(); // live validation with every input
+        //setSelectsValid(["anrede", "diversDetailsGroup", "land"]); // selects are always true
+    }
+
+    if (isValid) showSuccessAndRedirect();
+
+}
+
+function setupDiversDetails() {
+    const anrede = document.getElementById('anrede');
+    const detailsGroup = document.getElementById('diversDetailsGroup');
+    const detailsInput = document.getElementById('diversDetails');
+
+    if (!anrede || !detailsGroup) return;
+
+    const toggle = () => {
+        if (anrede.value === 'Divers') {
+            detailsGroup.style.display = 'block';
         } else {
-            $('#diversDetailsGroup').slideUp(200);
-            $('#diversDetails').val('');
+            detailsGroup.style.display = 'none';
+            if (detailsInput) {
+                detailsInput.value = '';
+                clearValidation(detailsInput);
+            }
+        }
+    };
+
+    anrede.addEventListener('change', toggle);
+    toggle();
+}
+
+
+function validateForm() {
+    let isFormValid = true;
+
+    isFormValid = validateStringInput('vorname', false, 3, 30) && isFormValid;
+    isFormValid = validateStringInput('nachname', false, 2, 100) && isFormValid;
+    isFormValid = validateStringInput('username', true, 5, 30) && isFormValid;
+    isFormValid = validateStringInput('email', true, 5, 100, false, false, false, true) && isFormValid;
+    isFormValid = validateStringInput('telefon', false, 7, 30) && isFormValid;
+    isFormValid = validateStringInput('plz', false, 2, 10) && isFormValid;
+
+    const detailsGroup = document.getElementById('diversDetailsGroup');
+    if (detailsGroup && detailsGroup.style.display !== 'none') {
+        isFormValid = validateStringInput('diversDetails', false, 4, 30) && isFormValid;
+    } else {
+        const details = document.getElementById('diversDetails');
+        if (details) clearValidation(details);
+    }
+    return isFormValid;
+}
+
+
+function setSelectsValid(arrayOfIds) {
+    if (!Array.isArray(arrayOfIds)) return;
+
+    let count = 0;
+    for (const id of arrayOfIds) {
+        const element = document.getElementById(id);
+        if (!element) continue;
+
+        element.classList.add('is-valid');
+    }
+    return;
+}
+
+
+function bindLiveValidation() {
+    if (liveCheckFields) return;
+    liveCheckFields = true;
+
+    // Map: field -> Validator-Funktion - for each field the correct validator function is called
+    const validators = {
+        vorname:   () => validateStringInput('vorname', false, 3, 30),
+        nachname:  () => validateStringInput('nachname', false, 2, 100),
+        username:  () => validateStringInput('username',true, 5, 30),
+        email:     () => validateStringInput('email', true, 5, 100, false, false, false, true),
+        telefon:   () => validateStringInput('telefon', false, 7, 30),
+        plz:   () => validateStringInput('plz', false, 2, 10),
+        diversDetails: () => {
+            const grp = document.getElementById('diversDetailsGroup');
+            if (grp && grp.style.display !== 'none') {
+                return validateStringInput('diversDetails', false, 4, 30);
+            } else {
+                const details = document.getElementById('diversDetails');
+                if (details) clearValidation(details);
+                return true;
+            }
+        }
+    };
+
+    //bind for each field the suitable event
+    Object.keys(validators).forEach((fieldId) => {
+        const element = document.getElementById(fieldId);
+        if (!element) return;
+
+        const handler = () => {
+            if (!hasSubmittedForm) return;
+            validators[fieldId]();
+        };
+
+        if (element.tagName === 'SELECT') {
+            element.addEventListener('change', handler);
+        } else {
+            element.addEventListener('input', handler);
+            // also if the focus is lost
+            element.addEventListener('blur', handler);
         }
     });
+}
 
-    // Formular absenden
-    $('#userForm').on('submit', function(e) {
-        e.preventDefault();
-        var formData = $(this).serializeArray();
-        var jsonData = {};
-        $.each(formData, function(_, field) {
-            jsonData[field.name] = field.value;
-        });
-        console.log("Gespeicherte Benutzerdaten:", jsonData);
-        $('#successMessage').fadeIn(300).delay(2000).fadeOut(300);
-    });
-});
+
+function showSuccessAndRedirect() {
+    const btn = document.querySelector('#userForm button[type="submit"]');
+    if (btn) btn.disabled = true;
+
+    const msg = document.getElementById('successMessage');
+    if (msg) {
+        msg.style.display = 'block';
+    }
+
+    /*/setTimeout(() => {
+          window.location.href = 'login.html';
+      }, 1000);*/
+}
