@@ -22,11 +22,11 @@
         <div class="col-12 col-md-6">
             <select id="sort-dropdown" class="form-select form-select-sm">
                 <option value="">Sortieren nach...</option>
-                <option value="name">Name</option>
-                <option value="kategorie">Kategorie</option>
-                <option value="unterkategorie">Unterkat.</option>
-                <option value="preis">Preis</option>
-                <option value="status">Status</option>
+                <option value="productName">Name</option>
+                <option value="mainCategory">Kategorie</option>
+                <option value="subCategory">Unterkat.</option>
+                <option value="price">Preis</option>
+                <option value="isActive">Status</option>
             </select>
         </div>
     </div>
@@ -35,11 +35,11 @@
         <table class="table table-sm table-striped" id="product-table">
             <thead class="table-light">
             <tr>
-                <th class="sortable" data-key="name">Name</th>
-                <th class="sortable" data-key="kategorie">Kategorie</th>
-                <th class="sortable" data-key="unterkategorie">Unterkat.</th>
-                <th class="sortable" data-key="preis">Preis</th>
-                <th class="sortable text-center" data-key="status">Status</th>
+                <th class="sortable" data-key="productName">Name</th>
+                <th class="sortable" data-key="mainCategory">Kategorie</th>
+                <th class="sortable" data-key="subCategory">Unterkat.</th>
+                <th class="sortable" data-key="price">Preis</th>
+                <th class="sortable text-center" data-key="isActive">Status</th>
             </tr>
             </thead>
             <tbody id="table-body"></tbody>

@@ -1,4 +1,4 @@
-const products = [
+/* const products = [
     { name: "Bruschetta Classica", kategorie: "Vorspeise", unterkategorie: "", preis: 5.90, status: true },
     { name: "Caprese mit Mozzarella di Bufala", kategorie: "Vorspeise", unterkategorie: "", preis: 7.20, status: false },
     { name: "Antipasto Misto", kategorie: "Vorspeise", unterkategorie: "", preis: 9.80, status: false },
@@ -30,7 +30,19 @@ const products = [
     { name: "Apfelsaft gespritzt 0,5l", kategorie: "Getränk", unterkategorie: "Alkoholfrei", preis: 3.20, status: true },
     { name: "Hauswein weiß 0,25l", kategorie: "Getränk", unterkategorie: "Wein", preis: 4.00, status: true },
     { name: "Moretti Bier 0,33l", kategorie: "Getränk", unterkategorie: "Bier", preis: 3.90, status: true }
-];
+]; */
+
+$.ajax({
+    url: "http://localhost:8080/products",
+    method: "GET",
+    success: function(data) {
+        products = data;
+        applyFilterAndSort();
+    },
+    error: function(err) {
+        console.error("Fehler beim Laden der Produkte:", err);        
+    }
+});
 
 let currentSort = { key: "", asc: true };
 
@@ -41,14 +53,15 @@ function renderProducts(list) {
     cards.innerHTML = "";
 
     list.forEach(p => {
-        const statusBadge = `<span class="badge ${p.status ? 'bg-success' : 'bg-secondary'} toggle-status" data-name="${p.name}" role="button">${p.status ? 'aktiv' : 'inaktiv'}</span>`;
+        const statusBadge = `<span class="badge ${p.isActive ? 'bg-success' : 'bg-secondary'} toggle-status" data-name="${p.productName}" role="button">${p.isActive ? 'aktiv' : 'inaktiv'}</span>`;
+
         // Tabelle
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${p.name}</td>
-            <td>${p.kategorie}</td>
-            <td>${p.unterkategorie || ''}</td>
-            <td>€ ${p.preis.toFixed(2)}</td>
+            <td>${p.productName}</td>
+            <td>${p.mainCategory}</td>
+            <td>${p.subCategory || ''}</td>
+            <td>€ ${p.price.toFixed(2)}</td>
             <td class="text-center">${statusBadge}</td>
         `;
         tbody.appendChild(row);
@@ -59,9 +72,9 @@ function renderProducts(list) {
         col.innerHTML = `
             <div class="card h-100">
                 <div class="card-body p-2">
-                    <p class="mb-1">${p.name}</p>
-                    <p class="mb-1">${p.kategorie} ${p.unterkategorie || ''}</p>
-                    <p class="mb-1">€ ${p.preis.toFixed(2)}</p>
+                    <p class="mb-1">${p.productName}</p>
+                    <p class="mb-1">${p.mainCategory} ${p.subCategory || ''}</p>
+                    <p class="mb-1">€ ${p.price.toFixed(2)}</p>
                     <p class="mb-0">${statusBadge}</p>
                 </div>
             </div>
@@ -112,8 +125,8 @@ document.querySelectorAll("th.sortable").forEach(th => {
 document.addEventListener("click", function(e) {
     if (e.target.classList.contains("toggle-status")) {
         const name = e.target.dataset.name;
-        const product = products.find(p => p.name === name);
-        if (product) product.status = !product.status;
+        const product = products.find(p => p.productName === name);
+        if (product) product.isActive = !product.isActive;
         applyFilterAndSort();
     }
 });
